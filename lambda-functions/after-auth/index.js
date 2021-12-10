@@ -21,6 +21,6 @@ exports.handler = (event, context, callback) => {
         body: JSON.stringify(graphqlReq)
     }, function (error, response, body) {
         console.log(body);
-        callback(null, user, context);
+        callback(null, context);
     });
 }
