@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import App from '../../App';
 import Users from '../../components/users/User';
 import ReviewsPage from '../pages/reviews-page/ReviewsPage';
+import AccountPage from "../pages/account-page/AccountPage";
 
 export default function Content() {
     return (
@@ -11,6 +12,7 @@ export default function Content() {
             <Route path="/lend-car" element={"Lend a car"}/>
             <Route path="/users" element={<Users/>}/>
             <Route path="/reviews" element={<ReviewsPage/>}/>
+            <Route path="/account" element={<AccountPage/>}/>
         </Routes>
     );
 }

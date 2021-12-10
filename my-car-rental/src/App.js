@@ -25,7 +25,13 @@ export default function App({ }) {
         <Toolbar>
           <Stack direction="row" flex={1} spacing={8}>
             <Typography variant="h5">Rent My Car</Typography>
-            <Typography variant="h6">Features</Typography>
+            <Typography variant="h6">
+              <Typography href="/lend-car" variant="h6">
+                <Link to="/account" underline="none" style={{ textDecoration: 'none', color: 'inherit'}}>
+                  <Box>Features</Box>
+                </Link>
+              </Typography>
+            </Typography>
             <Typography variant="h6">Why this app</Typography>
             <Typography variant="h6">Pricing</Typography>
 
