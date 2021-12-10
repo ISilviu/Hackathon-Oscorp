@@ -10,6 +10,9 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import { Button, Link as MuiLink, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+
 export default function App() {
 
   const theme = useTheme();
@@ -55,6 +58,8 @@ export default function App() {
       <Box p={3} display="flex">
         <Stack flex={1}>
           <Typography variant="h2">Rent a car with RideMyCar</Typography>
+          <FontAwesomeIcon icon={faCoffee} />
+
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec semper euismod erat, sed ornare dolor luctus vehicula. Curabitur dictum, turpis non molestie vehicula, sem lorem mattis tellus, a sagittis risus turpis vel nibh. Curabitur lacinia scelerisque lectus, ultricies auctor odio. Nullam in venenatis est. Sed id erat non mauris pretium scelerisque eget vel velit. Donec posuere, mi nec scelerisque laoreet, velit nisl vehicula nulla, id dignissim magna odio vel massa. Suspendisse vel dolor ultricies, placerat urna vitae, ullamcorper ligula. Vestibulum aliquet metus turpis, a fermentum tortor euismod sed. Sed viverra ante non feugiat condimentum. Nunc ac imperdiet velit. Nulla sollicitudin, urna non euismod consequat, nisl turpis vulputate sapien, at congue enim lacus scelerisque nisl. Pellentesque molestie ante tincidunt, consequat nibh sit amet, convallis mi. Interdum et malesuada fames ac ante ipsum primis in faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </Stack>
         <Stack flex={1}>
