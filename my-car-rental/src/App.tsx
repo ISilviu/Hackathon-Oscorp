@@ -1,58 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import React from "react";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import IconButton from "@mui/material/IconButton";
+import AccountCircle from "@mui/icons-material/AccountCircle";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static">
+        <Toolbar>
+          <Stack direction="row" flex={1} spacing={8}>
+            <Typography variant="h5">Rent My Car</Typography>
+            <Typography variant="h6">Features</Typography>
+            <Typography variant="h6">Why this app</Typography>
+            <Typography variant="h6">Pricing</Typography>
+          </Stack>
+          <div>
+            <IconButton
+              size="large"
+              color="inherit"
+            >
+              <AccountCircle />
+            </IconButton>
+            <IconButton
+              size="large"
+              color="inherit"
+            >
+              <PersonAddIcon />
+            </IconButton>
+          </div>
+        </Toolbar>
+      </AppBar>
+    </Box>
   );
 }
-
-export default App;
