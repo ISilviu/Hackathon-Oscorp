@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import App from '../../App';
 import Users from '../../components/users/User';
+import ReviewsPage from '../pages/reviews-page/ReviewsPage';
 
 export default function Content() {
     return (
@@ -9,6 +10,7 @@ export default function Content() {
             <Route path="/rent-car" element={"Rent a car"}/>
             <Route path="/lend-car" element={"Lend a car"}/>
             <Route path="/users" element={<Users/>}/>
+            <Route path="/reviews" element={<ReviewsPage/>}/>
         </Routes>
     );
 }
