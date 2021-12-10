@@ -7,7 +7,8 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import { Button, Link, useTheme } from "@mui/material";
+import { Button, Link as MuiLink, useTheme } from "@mui/material";
+import { Link } from "react-router-dom";
 
 export default function App() {
 
@@ -27,7 +28,7 @@ export default function App() {
             <Typography variant="h6">Pricing</Typography>
           </Stack>
           <div>
-            <Link
+            <MuiLink
               href={loginUrl}
               color="inherit"
             >
@@ -37,8 +38,8 @@ export default function App() {
               >
                 <AccountCircle />
               </IconButton>
-            </Link>
-            <Link
+            </MuiLink>
+            <MuiLink
               href={registerUrl}
               color="inherit">
               <IconButton
@@ -47,7 +48,7 @@ export default function App() {
               >
                 <PersonAddIcon />
               </IconButton>
-            </Link>
+            </MuiLink>
           </div>
         </Toolbar>
       </AppBar>
@@ -63,8 +64,12 @@ export default function App() {
       </Box>
       <img alt="" src="https://media.discordapp.net/attachments/598933863548321794/918950270686334996/used-car.jpg" height={theme.spacing(70)} />
       <Stack direction="row" mt={4} height={90} bgcolor="#433434" alignItems="center" justifyContent="center" spacing={2}>
-        <Button color="primary" variant="contained">Rent a car</Button>
-        <Button color="secondary" variant="contained">Lend a car</Button>
+        <Link to="/rent-car" style={{ textDecoration: 'none' }}>
+          <Button color="primary" variant="contained">Rent a car</Button>
+        </Link>
+        <Link to="/lend-car" style={{ textDecoration: 'none' }}>
+          <Button color="secondary" variant="contained">Lend a car</Button>
+        </Link>
       </Stack>
     </Stack>
   );
