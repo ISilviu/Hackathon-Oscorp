@@ -12,8 +12,9 @@ import { Link } from "react-router-dom";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+import ReviewsPage from "./app/pages/reviews-page/ReviewsPage";
 
-export default function App() {
+export default function App({ }) {
 
   const theme = useTheme();
 
@@ -79,6 +80,7 @@ export default function App() {
           <Button color="primary" variant="contained">Users</Button>
         </Link>
       </Stack>
+      <ReviewsPage />
     </Stack>
   );
 }
