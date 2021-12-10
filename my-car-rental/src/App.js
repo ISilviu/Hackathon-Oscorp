@@ -10,7 +10,9 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import { Button, Link as MuiLink, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 
-export default function App() {
+import ReviewsPage from "./app/pages/reviews-page/ReviewsPage";
+
+export default function App({ }) {
 
   const theme = useTheme();
 
@@ -26,6 +28,10 @@ export default function App() {
             <Typography variant="h6">Features</Typography>
             <Typography variant="h6">Why this app</Typography>
             <Typography variant="h6">Pricing</Typography>
+
+            <Link to="/reviews" style={{ textDecoration: 'none' }}>
+              <Button color="primary" variant="contained">Reviews</Button>
+            </Link>
           </Stack>
           <div>
             <MuiLink
@@ -74,6 +80,7 @@ export default function App() {
           <Button color="primary" variant="contained">Users</Button>
         </Link>
       </Stack>
+      <ReviewsPage />
     </Stack>
   );
 }
