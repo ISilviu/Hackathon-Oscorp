@@ -1,0 +1,5 @@
+query GetUsers {
+  users_user(order_by: { username: asc }) {
+    id
+  }
+}
