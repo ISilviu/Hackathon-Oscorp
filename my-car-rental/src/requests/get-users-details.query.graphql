@@ -1,0 +1,13 @@
+query MyQuery {
+  users_user(order_by: {}) {
+    id
+    date_registered
+    email
+    name
+    picture
+    preferred_language
+    updated_at
+    username
+    wallet_id
+  }
+}
