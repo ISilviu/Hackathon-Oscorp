@@ -1,7 +1,7 @@
 const request = require('request');
 
 exports.handler = (event, context, callback) => {
-    const userId = event.userName;
+    const userId = event.request.userAttributes.sub;
     const hasuraAdminSecret = process.env.HASURA_ADMIN_SECRET;
     const url = process.env.URL;
     const upsertUserQuery = `
