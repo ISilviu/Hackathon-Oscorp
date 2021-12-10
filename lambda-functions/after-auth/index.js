@@ -3,6 +3,7 @@ const request = require('request');
 exports.handler = (event, context, callback) => {
     const userId = event.request.userAttributes.sub;
     const userName = event.request.userAttributes.name;
+    const username = event.userName;
     const userEmail = event.request.userAttributes.email;
     const userPicture = event.request.userAttributes.picture;
     const updatedAt = event.request.userAttributes.updated_at;
@@ -11,7 +12,7 @@ exports.handler = (event, context, callback) => {
     const url = process.env.URL;
     const upsertUserQuery = `
             mutation MyMutation {
-                insert_users_user(objects: {id: "${userId}", name: "${userName}", email: "${userEmail}", picture: "${userPicture}", updated_at:"${updatedAt}"}) {
+                insert_users_user(objects: {id: "${userId}", username: "${username}", name: "${userName}", email: "${userEmail}", picture: "${userPicture}", updated_at:"${updatedAt}"}) {
                 returning {
                     id
                 }
