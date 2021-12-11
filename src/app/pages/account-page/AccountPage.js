@@ -31,18 +31,18 @@ const TabButton = styled(Button)(({ theme }) => ({
 const AccountPage = () => {
     return (
         <div className="AccPage">
-            <Box pt={5} pl={5}>
-                <TabButton sx={{backgroundColor: '#B4B4B4'}} variant="contained">
+            <Box pt={5} pl={5} className="Tabs">
+                <Button className="Tab" variant="contained">
                     <Link to="/account" style={{ textDecoration: 'none', color: "inherit" }}>
                         Profile
                     </Link>
-                </TabButton>
-                <TabButton sx={{backgroundColor: '#B4B4B4'}} variant="contained">My Rides</TabButton>
-                <TabButton sx={{backgroundColor: '#B4B4B4'}} variant="contained">
+                </Button>
+                <Button className="Tab" variant="contained">My Rides</Button>
+                <Button className="Tab" variant="contained">
                     <Link to="/transactions" style={{ textDecoration: 'none', color: "inherit" }}>
                         Transactions
                     </Link>
-                </TabButton>
+                </Button>
             </Box>
             <div className="Content">
 
@@ -82,6 +82,7 @@ const AccountPage = () => {
 
                 <div className="AddCar">
                     <FormWrapper>
+                    <h3>Add New Car</h3>
                         <form style={{'margin-bottom': "1rem"}}>
                             <Box style={{display:"flex"}}>
                                 <Stack style={{margin: "0 1rem"}}>

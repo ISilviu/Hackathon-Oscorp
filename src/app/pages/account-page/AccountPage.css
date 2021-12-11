@@ -1,8 +1,9 @@
 .AccPage {
-  padding-top: 65px;
 }
 
 .Content {
+  padding: 0 150px;
+  padding-top: 40px;
   display: grid;
   grid-template-columns: auto auto;
 }
@@ -10,9 +11,23 @@
 .userSettings {
   justify-content: center;
   display: flex;
+  width: 100%;
 }
 
 .AddCar {
   overflow: hidden;
   height: 100%;
+}
+
+.Tabs {
+  width: 400px;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 10px;
+}
+
+.Tab {
+  background-color: #b4b4b4 !important;
+  padding-top: 10px !important;
+  margin-top: 20px !important;
 }
