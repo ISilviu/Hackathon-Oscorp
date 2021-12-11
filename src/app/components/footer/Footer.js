@@ -7,11 +7,11 @@ const Footer = () => {
          © Team Oscorp
         </div>
         <div className="creators">
-          creators:
-            Szoke Andras Lorand
-            Molnar Szabi
-            Cristi
-            Pusky
+          Created by:
+            Szabi,
+            Cristi,
+            Lorand,
+            Pusky,
             Szilviu
         </div>
       </div>
