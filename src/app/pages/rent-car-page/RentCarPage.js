@@ -1,25 +1,142 @@
-import styled from 'styled-components'
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import { StyledCardContainer, StyledContainer } from './RentCatPage.styles'
+import CarMap from '../../components/car-map/CarMap'
+import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
+import CarCard from '../../components/car-card/CarCard';
+import Card from '@mui/material/Card';
+import { Paper } from '@mui/material';
+import { useMemo, useState } from 'react';
+import { Marker, Popup } from 'react-leaflet';
 
-const StyledContainer = styled.div`
-
-`
+const TEST_DATA = [
+    {
+        car_brand: 'Volvo XC60 2021',
+        description: 'Perfect condition. No recorded history.',
+        fuel_type: 'Petrol',
+        body_type: 'Hatch',
+        color: 'Red',
+        capacity: '5',
+        rate: '12',
+        reviews: [
+            {
+                description: 'The ride was comfy and the car in almost perfect condition. ',
+                title: 'Amazing car!',
+                score: '4.7',
+                date: Date.now()
+            },
+            {
+                description: 'Nice car overall.',
+                title: 'Good enough',
+                score: '4.0',
+                date: Date.now()
+            }
+        ],
+        images: [
+            'https://carwow-uk-wp-3.imgix.net/Volvo-XC40-white-scaled.jpg',
+            'https://carwow-uk-wp-3.imgix.net/Volvo-XC40-white-scaled.jpg',
+            'https://carwow-uk-wp-3.imgix.net/Volvo-XC40-white-scaled.jpg'
+        ]
+    },
+    {
+        car_brand: 'Volvo XC60 2021',
+        description: 'Perfect condition. No recorded history.',
+        fuel_type: 'Petrol',
+        body_type: 'Hatch',
+        color: 'Red',
+        capacity: '5',
+        rate: '12',
+        reviews: [
+            {
+                description: 'The ride was comfy and the car in almost perfect condition. ',
+                title: 'Amazing car!',
+                score: '4.7',
+                date: Date.now()
+            },
+            {
+                description: 'Nice car overall.',
+                title: 'Good enough',
+                score: '4.0',
+                date: Date.now()
+            }
+        ],
+        images: [
+            'https://carwow-uk-wp-3.imgix.net/Volvo-XC40-white-scaled.jpg',
+            'https://carwow-uk-wp-3.imgix.net/Volvo-XC40-white-scaled.jpg',
+            'https://carwow-uk-wp-3.imgix.net/Volvo-XC40-white-scaled.jpg'
+        ],
+        location: { lat: 45.645411, long: 25.591743 }
+    }
+]
 
 const RentCarPage = ({ }) => {
+    const [cars, setCars] = useState(TEST_DATA)
+    const [carPosition, setCarPosition] = useState(null)
+
+    const onReserveClick = () => {
+
+    }
+
+    const onInfoClick = () => {
+
+    }
+
+    const onMarkerClick = (marker) => {
+        if (marker) setCarPosition([marker?.lat, marker?.long])
+    }
+
+    const renderCarCards = () => {
+        return cars?.map((carData) => {
+            const { car_brand, description, fuel_type, body_type, color, capacity, rate, images, location } = carData
+            console.log(location)
+            return (
+                <StyledCardContainer>
+                    <CarCard
+                        carBrand={car_brand}
+                        description={description}
+                        fuelType={fuel_type}
+                        bodyType={body_type}
+                        color={color}
+                        capacity={capacity}
+                        rate={rate}
+                        image={images?.length ? images[0] : null}
+                        location={location}
+
+                        onReserveClick={onReserveClick}
+                        onInfoClick={onInfoClick}
+                        onMarkerClick={onMarkerClick}
+                    />
+                </StyledCardContainer>
+            )
+        })
+    }
+
+    const memoizedData = useMemo(() => renderCarCards(), [cars])
     return (
         <StyledContainer>
-            <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
-                <TileLayer
-                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
-                <Marker position={[51.505, -0.09]}>
-                    <Popup>
-                        A pretty CSS3 popup. <br /> Easily customizable.
-                    </Popup>
-                </Marker>
-            </MapContainer>
-        </StyledContainer>
+            <Box p={3} display="flex">
+                <Stack flex={1} style={{ alignItems: 'center' }}>
+                    <Paper style={{ maxHeight: '75vh', overflow: 'auto', padding: '5px' }}>
+                        {memoizedData}
+                    </Paper>
+                </Stack>
+
+                <Stack flex={1}>
+                    <Card style={{ maxHeight: '80vh' }}>
+                        <CarMap
+                            width={'65vw'}
+                            height={'70vh'}
+                            center={carPosition}
+                        >
+                            {carPosition && <Marker position={carPosition}>
+                                <Popup>
+                                    A pretty CSS3 popup. <br /> Easily customizable.
+                                </Popup>
+                            </Marker>}
+                        </CarMap>
+                    </Card>
+                </Stack>
+            </Box>
+        </StyledContainer >
     )
 }
 
