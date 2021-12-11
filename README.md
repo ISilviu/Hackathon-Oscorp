@@ -13,8 +13,8 @@ After a visual of the database diagram was done we started using Hasura. In tota
 
 We integrated AWS Cognito in tha application for sign in and sign up operations. Cognito is an user identity and data synchronization service that can be used in our app as a scalable service. We used this for documentation and best practices: https://docs.aws.amazon.com/cognito/latest/developerguide/multi-tenant-application-best-practices.html
 
-Aws cognito comunicates with the application using Aws Lambda functions. After an user is registered a query is automatically made and the user's data is added to the database using Hasura. After a successful login AWS Cognito return a JTW Token used for security purposes. 
+Aws cognito comunicates with the application using Aws Lambda functions. After an user is registered a query is automatically made and the user's data is added to the database using Hasura. After a successful login AWS Cognito will return a JWT Token used for security purposes. 
 
-AWS S3 service is also integrated in the backend application which is used as document storage. For examples uploading car images or profile pictures of the users.
+AWS S3 service is also integrated in the backend application which is used as document storage. For example, uploading car images or profile pictures of the users.
 
 A mock design was made in figma for a general overview of the app: https://www.figma.com/file/omOWUf7ANlLmVCAiGI47YM/Rent-My-Car?node-id=0%3A1
