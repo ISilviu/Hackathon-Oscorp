@@ -8,6 +8,7 @@ import { useMemo, useState } from 'react';
 import { Marker, Popup } from 'react-leaflet';
 import CarCard from '../../components/car-card/CarCard.js'
 import * as ql from '../../../generated/graphql'
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const DEFAULT_IMAGE = 'https://carwow-uk-wp-3.imgix.net/Volvo-XC40-white-scaled.jpg'
 
@@ -15,7 +16,6 @@ const RentCarPage = ({ }) => {
     const [cars, setCars] = useState(null)
     const [carPosition, setCarPosition] = useState(null)
     const [markerDescription, setMarkerDescription] = useState(null)
-
 
     const { data, loading, error } = ql.useGetAllAvailableCarsQuery({
         variables: {
@@ -29,6 +29,24 @@ const RentCarPage = ({ }) => {
     console.log('DATA:', data)
     const onReserveClick = () => {
 
+    }
+
+    const location = useLocation();
+    const extractAuthToken = () => {
+        const idTokenParam = 'id_token=';
+        const idTokenStart = location.hash.indexOf(idTokenParam);
+
+        const accessTokenParam = '&access_token=';
+        const accessTokenStart = location.hash.indexOf(accessTokenParam);
+
+        return location.hash.substring(idTokenStart + idTokenParam.length, accessTokenStart);
+    }
+    const authToken = extractAuthToken();
+    localStorage.setItem('authToken', authToken);
+
+    const navigate = useNavigate();
+    if(location.hash) {
+        navigate(location.pathname)
     }
 
     const onInfoClick = () => {
