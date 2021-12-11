@@ -30,9 +30,9 @@ const ReviewsPage = () => {
                         {/* <Button style={{position: 'absolute', top: '50%', left: '-10px'}}>
                             <FontAwesomeIcon icon={faChevronLeft}/>
                         </Button> */}
-                        <img src="images/placeholder.jpg"
+                        <img src="https://carwow-uk-wp-3.imgix.net/Volvo-XC40-white-scaled.jpg"
                             alt="car being reviewed"
-                            style={{ width: '100%', height: '100%', maxWidth: "100vh" }}
+                            className="carImage"
                         />
                         <ReviewStars absolute={true} score={2.65} />
                         {/* <Button>

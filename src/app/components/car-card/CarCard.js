@@ -9,6 +9,8 @@ import InfoIcon from '@mui/icons-material/Info';
 import { StyledColumns } from './CarCard.styles';
 import RoomIcon from '@mui/icons-material/Room';
 
+import { Link } from '@mui/material';
+
 const CarCard = ({
     carBrand,
     description,
@@ -22,7 +24,8 @@ const CarCard = ({
 
     onReserveClick,
     onInfoClick,
-    onMarkerClick
+    onMarkerClick,
+    onReviewClick
 }) => {
 
     const onMarkerClickLocal = () => {
@@ -74,6 +77,11 @@ const CarCard = ({
                         <RoomIcon />
                     </IconButton>
                 )}
+                <Link to="/reviews">
+                    <Button size="small" color="primary" onClick={onReviewClick}>
+                        Review
+                    </Button>
+                </Link>
             </CardActions>
         </Card>
     )
