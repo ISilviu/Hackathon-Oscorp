@@ -6,14 +6,12 @@ import { faArrowCircleLeft, faChevronLeft } from "@fortawesome/free-solid-svg-ic
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button } from "@mui/material";
 
-import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import "./ReviewsPage.css";
 
 const ReviewsPage = () => {
     return (
         <div className="RevPageCont">
-            <Header/>
 
             {/* <img src="images/review-bg.jpg" className="Background"/> */}
 
@@ -28,9 +26,9 @@ const ReviewsPage = () => {
                         </Button> */}
                         <img src="images/placeholder.jpg"
                             alt="car being reviewed"
-                            style={{width: '100%', height: '100%'}}
-                            />
-                        <ReviewStars absolute={true} score={2.65}/>
+                            style={{ width: '100%', height: '100%' }}
+                        />
+                        <ReviewStars absolute={true} score={2.65} />
                         {/* <Button>
                             <FontAwesomeIcon icon={faChevronLeft}
                                     style={{transform: 'rotate(180deg)'}}
@@ -40,21 +38,20 @@ const ReviewsPage = () => {
 
                     <div className="Contribution">
                         Your score:
-                        <ReviewStars score={2.65}/>
+                        <ReviewStars score={2.65} />
 
                         <br></br>
-                        <TextField 
-                        className="RevNote"
-                        label="Review note" minRows={7} multiline color="primary" focused/>
+                        <TextField
+                            className="RevNote"
+                            label="Review note" minRows={7} multiline color="primary" focused />
 
                         <Button className="Submit primary-btn" variant="contained" >Submit</Button>
                     </div>
                 </div>
             </div>
 
-            <Footer/>
         </div>
-        
+
     )
 }
 
