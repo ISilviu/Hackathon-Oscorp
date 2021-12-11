@@ -13,7 +13,7 @@ const TabButton = styled(Button)(({ theme }) => ({
     color: theme.palette.getContrastText(grey[500]),
     backgroundColor: grey[500],
     '&:hover': {
-        backgroundColor: grey[700],
+        backgroundColor: grey[600],
     },
     padding: 5,
     margin: 5,
@@ -32,9 +32,17 @@ const AccountPage = () => {
     return (
         <div className="AccPage">
             <Box pt={5} pl={5}>
-                <TabButton sx={{backgroundColor: '#B4B4B4'}} variant="contained">Profile</TabButton>
+                <TabButton sx={{backgroundColor: '#B4B4B4'}} variant="contained">
+                    <Link to="/account" style={{ textDecoration: 'none', color: "inherit" }}>
+                        Profile
+                    </Link>
+                </TabButton>
                 <TabButton sx={{backgroundColor: '#B4B4B4'}} variant="contained">My Rides</TabButton>
-                <TabButton sx={{backgroundColor: '#B4B4B4'}} variant="contained">Funds</TabButton>
+                <TabButton sx={{backgroundColor: '#B4B4B4'}} variant="contained">
+                    <Link to="/transactions" style={{ textDecoration: 'none', color: "inherit" }}>
+                        Transactions
+                    </Link>
+                </TabButton>
             </Box>
             <div className="Content">
 
