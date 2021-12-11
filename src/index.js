@@ -3,17 +3,17 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-import Content from './app/components/Content';
 import { client } from "./ApolloClient/client";
 import { ApolloProvider } from "@apollo/client";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import AppPage from './app/pages/app-page/AppPage';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <ApolloProvider client={client}>
-        <Content />
+        <AppPage />
       </ApolloProvider>
     </BrowserRouter>
   </React.StrictMode>,

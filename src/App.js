@@ -11,7 +11,6 @@ import { Button, CardActions, CardContent, Link as MuiLink } from "@mui/material
 import { createTheme } from '@mui/material/styles';
 import { green, purple } from '@mui/material/colors';
 import { Link } from "react-router-dom";
-import Header from "./app/components/header/Header";
 import Footer from "./app/components/footer/Footer";
 import { Card } from "@mui/material";
 import "./App.css";
@@ -35,28 +34,27 @@ export default function App({ }) {
 
   return (
     <ThemeProvider theme={theme}>
-        <Header/>
 
-          <div className="Splash">
-            <img src="/images/background.jpg" className="BgImg"
-            />
-            <Card className="Greeting">
-              <CardContent>
-                <Typography variant="h4" className="GreetingTitle">
-                  Start renting today!
-                </Typography>
-              </CardContent>
-              <CardActions>
-                <Link to="/rent-car" underline="none" style={{ textDecoration: 'none'}} className="GreetingButton">
-                  <Button variant="contained" color="primary" className="primary-btn">
-                    Browse Cars
-                  </Button>
-                </Link>
-              </CardActions>
-            </Card>
-          </div>
+      <div className="Splash">
+        <img src="/images/background.jpg" className="BgImg"
+        />
+        <Card className="Greeting">
+          <CardContent>
+            <Typography variant="h4" className="GreetingTitle">
+              Start renting today!
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Link to="/rent-car" underline="none" style={{ textDecoration: 'none' }} className="GreetingButton">
+              <Button variant="contained" color="primary" className="primary-btn">
+                Browse Cars
+              </Button>
+            </Link>
+          </CardActions>
+        </Card>
+      </div>
 
-        {/* <Stack sx={{ flexGrow: 1 }}>
+      {/* <Stack sx={{ flexGrow: 1 }}>
           <img alt="" src="https://media.discordapp.net/attachments/598933863548321794/918950270686334996/used-car.jpg" height={theme.spacing(70)} />
           <Stack direction="row" mt={4} height={90} bgcolor="#433434" alignItems="center" justifyContent="center" spacing={2}>
             <Link to="/rent-car" style={{ textDecoration: 'none' }}>
@@ -71,7 +69,6 @@ export default function App({ }) {
           </Stack>
         </Stack> */}
 
-        <Footer/>
 
     </ThemeProvider>
   );
