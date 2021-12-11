@@ -9,7 +9,7 @@ Initially we created a diagram of the desired database: https://dbdiagram.io/d/6
 
 As in the description in the image above, the Api (Hasura) requires a token to validate a response. The backend relies heavily on Hasura. It contains all the database and it handles all operations including CRUD with GraphQL queries. Data is being requested and added to Hasura using GraohQL from the frontend application.
 
-After a visual of the database diagram was done we started using Hasura. In total 5 schemas were introduced: Cars, Transaction, Review and Users. Each of them has tables containing data for the database. These tables and schemas were created manually using the Hasura interface, however some data was added using the available SQL script.  
+After a visual of the database diagram was done we started using Hasura. In total 4 schemas were introduced: Cars, Transaction, Review and Users. Each of them has tables containing data for the database. These tables and schemas were created manually using the Hasura interface, however some data was added using the available SQL script.  
 
 We integrated AWS Cognito in tha application for sign in and sign up operations. Cognito is an user identity and data synchronization service that can be used in our app as a scalable service. We used this for documentation and best practices: https://docs.aws.amazon.com/cognito/latest/developerguide/multi-tenant-application-best-practices.html
 
