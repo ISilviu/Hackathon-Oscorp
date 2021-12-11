@@ -2,74 +2,17 @@ import { StyledCardContainer, StyledContainer } from './RentCatPage.styles'
 import CarMap from '../../components/car-map/CarMap'
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
-import CarCard from '../../components/car-card/CarCard';
 import Card from '@mui/material/Card';
 import { Paper } from '@mui/material';
 import { useMemo, useState } from 'react';
 import { Marker, Popup } from 'react-leaflet';
+import CarCard from '../../components/car-card/CarCard.js'
+import * as ql from '../../../generated/graphql'
 
-const TEST_DATA = [
-    {
-        car_brand: 'Volvo XC60 2021',
-        description: 'Perfect condition. No recorded history.',
-        fuel_type: 'Petrol',
-        body_type: 'Hatch',
-        color: 'Red',
-        capacity: '5',
-        rate: '12',
-        reviews: [
-            {
-                description: 'The ride was comfy and the car in almost perfect condition. ',
-                title: 'Amazing car!',
-                score: '4.7',
-                date: Date.now()
-            },
-            {
-                description: 'Nice car overall.',
-                title: 'Good enough',
-                score: '4.0',
-                date: Date.now()
-            }
-        ],
-        images: [
-            'https://carwow-uk-wp-3.imgix.net/Volvo-XC40-white-scaled.jpg',
-            'https://carwow-uk-wp-3.imgix.net/Volvo-XC40-white-scaled.jpg',
-            'https://carwow-uk-wp-3.imgix.net/Volvo-XC40-white-scaled.jpg'
-        ]
-    },
-    {
-        car_brand: 'Volvo XC60 2021',
-        description: 'Perfect condition. No recorded history.',
-        fuel_type: 'Petrol',
-        body_type: 'Hatch',
-        color: 'Red',
-        capacity: '5',
-        rate: '12',
-        reviews: [
-            {
-                description: 'The ride was comfy and the car in almost perfect condition. ',
-                title: 'Amazing car!',
-                score: '4.7',
-                date: Date.now()
-            },
-            {
-                description: 'Nice car overall.',
-                title: 'Good enough',
-                score: '4.0',
-                date: Date.now()
-            }
-        ],
-        images: [
-            'https://carwow-uk-wp-3.imgix.net/Volvo-XC40-white-scaled.jpg',
-            'https://carwow-uk-wp-3.imgix.net/Volvo-XC40-white-scaled.jpg',
-            'https://carwow-uk-wp-3.imgix.net/Volvo-XC40-white-scaled.jpg'
-        ],
-        location: { lat: 45.645411, long: 25.591743 }
-    }
-]
+const DEFAULT_IMAGE = 'https://carwow-uk-wp-3.imgix.net/Volvo-XC40-white-scaled.jpg'
 
 const RentCarPage = ({ }) => {
-    const [cars, setCars] = useState(TEST_DATA)
+    const [cars, setCars] = useState(null)
     const [carPosition, setCarPosition] = useState(null)
     const [markerDescription, setMarkerDescription] = useState(null)
 
@@ -83,6 +26,16 @@ const RentCarPage = ({ }) => {
         setCars(data?.cars_car)
     }
 
+    const { data, loading, error } = ql.useGetAllAvailableCarsQuery({
+        variables: {
+        },
+    });
+
+    if (!cars && data) {
+        setCars(data?.cars_car)
+    }
+
+    console.log('DATA:', data)
     const onReserveClick = () => {
 
     }
@@ -112,7 +65,7 @@ const RentCarPage = ({ }) => {
                         color={color}
                         capacity={capacity}
                         rate={rate}
-                        image={images?.length ? images[0] : null}
+                        image={images?.length ? images[0] : DEFAULT_IMAGE}
                         location={location}
 
                         onReserveClick={onReserveClick}

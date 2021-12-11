@@ -1,0 +1,40 @@
+query GetAllAvailableCars {
+  cars_car(
+    where: { status: { _eq: AVAILABLE } }
+    order_by: { car_reviews_aggregate: { count: asc } }
+  ) {
+    body_type
+    capacity
+    car_brand
+    car_reviews {
+      car_id
+      id
+      review_id
+      reviewer_id
+      review {
+        date
+        description
+        id
+        score
+        title
+      }
+    }
+    color
+    description
+    fuel_type
+    id
+    is_approval_required
+    lender_id
+    plate_number
+    rate
+    status
+    location {
+      long
+      lat
+      city
+      country
+      state
+      id
+    }
+  }
+}

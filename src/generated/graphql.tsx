@@ -80,7 +80,31 @@ export type String_Comparison_Exp = {
 /** columns and relationships of "cars.body_type" */
 export type Cars_Body_Type = {
   __typename?: 'cars_body_type';
+  /** An array relationship */
+  cars: Array<Cars_Car>;
+  /** An aggregate relationship */
+  cars_aggregate: Cars_Car_Aggregate;
   value: Scalars['String'];
+};
+
+
+/** columns and relationships of "cars.body_type" */
+export type Cars_Body_TypeCarsArgs = {
+  distinct_on?: InputMaybe<Array<Cars_Car_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Cars_Car_Order_By>>;
+  where?: InputMaybe<Cars_Car_Bool_Exp>;
+};
+
+
+/** columns and relationships of "cars.body_type" */
+export type Cars_Body_TypeCars_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Cars_Car_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Cars_Car_Order_By>>;
+  where?: InputMaybe<Cars_Car_Bool_Exp>;
 };
 
 /** aggregated selection of "cars.body_type" */
@@ -110,6 +134,7 @@ export type Cars_Body_Type_Bool_Exp = {
   _and?: InputMaybe<Array<Cars_Body_Type_Bool_Exp>>;
   _not?: InputMaybe<Cars_Body_Type_Bool_Exp>;
   _or?: InputMaybe<Array<Cars_Body_Type_Bool_Exp>>;
+  cars?: InputMaybe<Cars_Car_Bool_Exp>;
   value?: InputMaybe<String_Comparison_Exp>;
 };
 
@@ -136,6 +161,7 @@ export type Cars_Body_Type_Enum_Comparison_Exp = {
 
 /** input type for inserting data into table "cars.body_type" */
 export type Cars_Body_Type_Insert_Input = {
+  cars?: InputMaybe<Cars_Car_Arr_Rel_Insert_Input>;
   value?: InputMaybe<Scalars['String']>;
 };
 
@@ -160,6 +186,13 @@ export type Cars_Body_Type_Mutation_Response = {
   returning: Array<Cars_Body_Type>;
 };
 
+/** input type for inserting object relation for remote table "cars.body_type" */
+export type Cars_Body_Type_Obj_Rel_Insert_Input = {
+  data: Cars_Body_Type_Insert_Input;
+  /** on conflict condition */
+  on_conflict?: InputMaybe<Cars_Body_Type_On_Conflict>;
+};
+
 /** on conflict condition type for table "cars.body_type" */
 export type Cars_Body_Type_On_Conflict = {
   constraint: Cars_Body_Type_Constraint;
@@ -169,6 +202,7 @@ export type Cars_Body_Type_On_Conflict = {
 
 /** Ordering options when selecting data from "cars.body_type". */
 export type Cars_Body_Type_Order_By = {
+  cars_aggregate?: InputMaybe<Cars_Car_Aggregate_Order_By>;
   value?: InputMaybe<Order_By>;
 };
 
@@ -197,19 +231,103 @@ export enum Cars_Body_Type_Update_Column {
 /** columns and relationships of "cars.car" */
 export type Cars_Car = {
   __typename?: 'cars_car';
+  /** An object relationship */
+  bodyTypeByBodyType: Cars_Body_Type;
   body_type: Cars_Body_Type_Enum;
   capacity: Scalars['Int'];
   car_brand: Cars_Car_Brand_Type_Enum;
+  /** An object relationship */
+  car_brand_type: Cars_Car_Brand_Type;
+  /** An array relationship */
+  car_images: Array<Cars_Car_Images>;
+  /** An aggregate relationship */
+  car_images_aggregate: Cars_Car_Images_Aggregate;
+  /** An array relationship */
+  car_reviews: Array<Review_Car_Review>;
+  /** An aggregate relationship */
+  car_reviews_aggregate: Review_Car_Review_Aggregate;
+  /** An object relationship */
+  car_status: Cars_Car_Status;
   color: Scalars['String'];
   description: Scalars['String'];
+  /** An object relationship */
+  fuelTypeByFuelType: Cars_Fuel_Type;
   fuel_type: Cars_Fuel_Type_Enum;
   id: Scalars['uuid'];
   is_approval_required: Scalars['Boolean'];
   lender_id: Scalars['uuid'];
+  /** An object relationship */
+  location: Cars_Location;
   location_id: Scalars['uuid'];
   plate_number: Scalars['String'];
   rate: Scalars['numeric'];
+  /** An array relationship */
+  rental_contracts: Array<Transaction_Rental_Contract>;
+  /** An aggregate relationship */
+  rental_contracts_aggregate: Transaction_Rental_Contract_Aggregate;
   status: Cars_Car_Status_Enum;
+  /** An object relationship */
+  user: Users_User;
+};
+
+
+/** columns and relationships of "cars.car" */
+export type Cars_CarCar_ImagesArgs = {
+  distinct_on?: InputMaybe<Array<Cars_Car_Images_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Cars_Car_Images_Order_By>>;
+  where?: InputMaybe<Cars_Car_Images_Bool_Exp>;
+};
+
+
+/** columns and relationships of "cars.car" */
+export type Cars_CarCar_Images_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Cars_Car_Images_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Cars_Car_Images_Order_By>>;
+  where?: InputMaybe<Cars_Car_Images_Bool_Exp>;
+};
+
+
+/** columns and relationships of "cars.car" */
+export type Cars_CarCar_ReviewsArgs = {
+  distinct_on?: InputMaybe<Array<Review_Car_Review_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Review_Car_Review_Order_By>>;
+  where?: InputMaybe<Review_Car_Review_Bool_Exp>;
+};
+
+
+/** columns and relationships of "cars.car" */
+export type Cars_CarCar_Reviews_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Review_Car_Review_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Review_Car_Review_Order_By>>;
+  where?: InputMaybe<Review_Car_Review_Bool_Exp>;
+};
+
+
+/** columns and relationships of "cars.car" */
+export type Cars_CarRental_ContractsArgs = {
+  distinct_on?: InputMaybe<Array<Transaction_Rental_Contract_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Transaction_Rental_Contract_Order_By>>;
+  where?: InputMaybe<Transaction_Rental_Contract_Bool_Exp>;
+};
+
+
+/** columns and relationships of "cars.car" */
+export type Cars_CarRental_Contracts_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Transaction_Rental_Contract_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Transaction_Rental_Contract_Order_By>>;
+  where?: InputMaybe<Transaction_Rental_Contract_Bool_Exp>;
 };
 
 /** aggregated selection of "cars.car" */
@@ -242,6 +360,28 @@ export type Cars_Car_Aggregate_FieldsCountArgs = {
   distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
+/** order by aggregate values of table "cars.car" */
+export type Cars_Car_Aggregate_Order_By = {
+  avg?: InputMaybe<Cars_Car_Avg_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Cars_Car_Max_Order_By>;
+  min?: InputMaybe<Cars_Car_Min_Order_By>;
+  stddev?: InputMaybe<Cars_Car_Stddev_Order_By>;
+  stddev_pop?: InputMaybe<Cars_Car_Stddev_Pop_Order_By>;
+  stddev_samp?: InputMaybe<Cars_Car_Stddev_Samp_Order_By>;
+  sum?: InputMaybe<Cars_Car_Sum_Order_By>;
+  var_pop?: InputMaybe<Cars_Car_Var_Pop_Order_By>;
+  var_samp?: InputMaybe<Cars_Car_Var_Samp_Order_By>;
+  variance?: InputMaybe<Cars_Car_Variance_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "cars.car" */
+export type Cars_Car_Arr_Rel_Insert_Input = {
+  data: Array<Cars_Car_Insert_Input>;
+  /** on conflict condition */
+  on_conflict?: InputMaybe<Cars_Car_On_Conflict>;
+};
+
 /** aggregate avg on columns */
 export type Cars_Car_Avg_Fields = {
   __typename?: 'cars_car_avg_fields';
@@ -249,30 +389,69 @@ export type Cars_Car_Avg_Fields = {
   rate?: Maybe<Scalars['Float']>;
 };
 
+/** order by avg() on columns of table "cars.car" */
+export type Cars_Car_Avg_Order_By = {
+  capacity?: InputMaybe<Order_By>;
+  rate?: InputMaybe<Order_By>;
+};
+
 /** Boolean expression to filter rows from the table "cars.car". All fields are combined with a logical 'AND'. */
 export type Cars_Car_Bool_Exp = {
   _and?: InputMaybe<Array<Cars_Car_Bool_Exp>>;
   _not?: InputMaybe<Cars_Car_Bool_Exp>;
   _or?: InputMaybe<Array<Cars_Car_Bool_Exp>>;
+  bodyTypeByBodyType?: InputMaybe<Cars_Body_Type_Bool_Exp>;
   body_type?: InputMaybe<Cars_Body_Type_Enum_Comparison_Exp>;
   capacity?: InputMaybe<Int_Comparison_Exp>;
   car_brand?: InputMaybe<Cars_Car_Brand_Type_Enum_Comparison_Exp>;
+  car_brand_type?: InputMaybe<Cars_Car_Brand_Type_Bool_Exp>;
+  car_images?: InputMaybe<Cars_Car_Images_Bool_Exp>;
+  car_reviews?: InputMaybe<Review_Car_Review_Bool_Exp>;
+  car_status?: InputMaybe<Cars_Car_Status_Bool_Exp>;
   color?: InputMaybe<String_Comparison_Exp>;
   description?: InputMaybe<String_Comparison_Exp>;
+  fuelTypeByFuelType?: InputMaybe<Cars_Fuel_Type_Bool_Exp>;
   fuel_type?: InputMaybe<Cars_Fuel_Type_Enum_Comparison_Exp>;
   id?: InputMaybe<Uuid_Comparison_Exp>;
   is_approval_required?: InputMaybe<Boolean_Comparison_Exp>;
   lender_id?: InputMaybe<Uuid_Comparison_Exp>;
+  location?: InputMaybe<Cars_Location_Bool_Exp>;
   location_id?: InputMaybe<Uuid_Comparison_Exp>;
   plate_number?: InputMaybe<String_Comparison_Exp>;
   rate?: InputMaybe<Numeric_Comparison_Exp>;
+  rental_contracts?: InputMaybe<Transaction_Rental_Contract_Bool_Exp>;
   status?: InputMaybe<Cars_Car_Status_Enum_Comparison_Exp>;
+  user?: InputMaybe<Users_User_Bool_Exp>;
 };
 
 /** columns and relationships of "cars.car_brand_type" */
 export type Cars_Car_Brand_Type = {
   __typename?: 'cars_car_brand_type';
+  /** An array relationship */
+  cars: Array<Cars_Car>;
+  /** An aggregate relationship */
+  cars_aggregate: Cars_Car_Aggregate;
   value: Scalars['String'];
+};
+
+
+/** columns and relationships of "cars.car_brand_type" */
+export type Cars_Car_Brand_TypeCarsArgs = {
+  distinct_on?: InputMaybe<Array<Cars_Car_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Cars_Car_Order_By>>;
+  where?: InputMaybe<Cars_Car_Bool_Exp>;
+};
+
+
+/** columns and relationships of "cars.car_brand_type" */
+export type Cars_Car_Brand_TypeCars_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Cars_Car_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Cars_Car_Order_By>>;
+  where?: InputMaybe<Cars_Car_Bool_Exp>;
 };
 
 /** aggregated selection of "cars.car_brand_type" */
@@ -302,6 +481,7 @@ export type Cars_Car_Brand_Type_Bool_Exp = {
   _and?: InputMaybe<Array<Cars_Car_Brand_Type_Bool_Exp>>;
   _not?: InputMaybe<Cars_Car_Brand_Type_Bool_Exp>;
   _or?: InputMaybe<Array<Cars_Car_Brand_Type_Bool_Exp>>;
+  cars?: InputMaybe<Cars_Car_Bool_Exp>;
   value?: InputMaybe<String_Comparison_Exp>;
 };
 
@@ -328,6 +508,7 @@ export type Cars_Car_Brand_Type_Enum_Comparison_Exp = {
 
 /** input type for inserting data into table "cars.car_brand_type" */
 export type Cars_Car_Brand_Type_Insert_Input = {
+  cars?: InputMaybe<Cars_Car_Arr_Rel_Insert_Input>;
   value?: InputMaybe<Scalars['String']>;
 };
 
@@ -352,6 +533,13 @@ export type Cars_Car_Brand_Type_Mutation_Response = {
   returning: Array<Cars_Car_Brand_Type>;
 };
 
+/** input type for inserting object relation for remote table "cars.car_brand_type" */
+export type Cars_Car_Brand_Type_Obj_Rel_Insert_Input = {
+  data: Cars_Car_Brand_Type_Insert_Input;
+  /** on conflict condition */
+  on_conflict?: InputMaybe<Cars_Car_Brand_Type_On_Conflict>;
+};
+
 /** on conflict condition type for table "cars.car_brand_type" */
 export type Cars_Car_Brand_Type_On_Conflict = {
   constraint: Cars_Car_Brand_Type_Constraint;
@@ -361,6 +549,7 @@ export type Cars_Car_Brand_Type_On_Conflict = {
 
 /** Ordering options when selecting data from "cars.car_brand_type". */
 export type Cars_Car_Brand_Type_Order_By = {
+  cars_aggregate?: InputMaybe<Cars_Car_Aggregate_Order_By>;
   value?: InputMaybe<Order_By>;
 };
 
@@ -395,6 +584,8 @@ export enum Cars_Car_Constraint {
 /** columns and relationships of "cars.car_images" */
 export type Cars_Car_Images = {
   __typename?: 'cars_car_images';
+  /** An object relationship */
+  car: Cars_Car;
   car_id: Scalars['uuid'];
   id: Scalars['uuid'];
   image_url: Scalars['String'];
@@ -422,11 +613,26 @@ export type Cars_Car_Images_Aggregate_FieldsCountArgs = {
   distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
+/** order by aggregate values of table "cars.car_images" */
+export type Cars_Car_Images_Aggregate_Order_By = {
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Cars_Car_Images_Max_Order_By>;
+  min?: InputMaybe<Cars_Car_Images_Min_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "cars.car_images" */
+export type Cars_Car_Images_Arr_Rel_Insert_Input = {
+  data: Array<Cars_Car_Images_Insert_Input>;
+  /** on conflict condition */
+  on_conflict?: InputMaybe<Cars_Car_Images_On_Conflict>;
+};
+
 /** Boolean expression to filter rows from the table "cars.car_images". All fields are combined with a logical 'AND'. */
 export type Cars_Car_Images_Bool_Exp = {
   _and?: InputMaybe<Array<Cars_Car_Images_Bool_Exp>>;
   _not?: InputMaybe<Cars_Car_Images_Bool_Exp>;
   _or?: InputMaybe<Array<Cars_Car_Images_Bool_Exp>>;
+  car?: InputMaybe<Cars_Car_Bool_Exp>;
   car_id?: InputMaybe<Uuid_Comparison_Exp>;
   id?: InputMaybe<Uuid_Comparison_Exp>;
   image_url?: InputMaybe<String_Comparison_Exp>;
@@ -440,6 +646,7 @@ export enum Cars_Car_Images_Constraint {
 
 /** input type for inserting data into table "cars.car_images" */
 export type Cars_Car_Images_Insert_Input = {
+  car?: InputMaybe<Cars_Car_Obj_Rel_Insert_Input>;
   car_id?: InputMaybe<Scalars['uuid']>;
   id?: InputMaybe<Scalars['uuid']>;
   image_url?: InputMaybe<Scalars['String']>;
@@ -453,12 +660,26 @@ export type Cars_Car_Images_Max_Fields = {
   image_url?: Maybe<Scalars['String']>;
 };
 
+/** order by max() on columns of table "cars.car_images" */
+export type Cars_Car_Images_Max_Order_By = {
+  car_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  image_url?: InputMaybe<Order_By>;
+};
+
 /** aggregate min on columns */
 export type Cars_Car_Images_Min_Fields = {
   __typename?: 'cars_car_images_min_fields';
   car_id?: Maybe<Scalars['uuid']>;
   id?: Maybe<Scalars['uuid']>;
   image_url?: Maybe<Scalars['String']>;
+};
+
+/** order by min() on columns of table "cars.car_images" */
+export type Cars_Car_Images_Min_Order_By = {
+  car_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  image_url?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "cars.car_images" */
@@ -479,6 +700,7 @@ export type Cars_Car_Images_On_Conflict = {
 
 /** Ordering options when selecting data from "cars.car_images". */
 export type Cars_Car_Images_Order_By = {
+  car?: InputMaybe<Cars_Car_Order_By>;
   car_id?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   image_url?: InputMaybe<Order_By>;
@@ -524,19 +746,28 @@ export type Cars_Car_Inc_Input = {
 
 /** input type for inserting data into table "cars.car" */
 export type Cars_Car_Insert_Input = {
+  bodyTypeByBodyType?: InputMaybe<Cars_Body_Type_Obj_Rel_Insert_Input>;
   body_type?: InputMaybe<Cars_Body_Type_Enum>;
   capacity?: InputMaybe<Scalars['Int']>;
   car_brand?: InputMaybe<Cars_Car_Brand_Type_Enum>;
+  car_brand_type?: InputMaybe<Cars_Car_Brand_Type_Obj_Rel_Insert_Input>;
+  car_images?: InputMaybe<Cars_Car_Images_Arr_Rel_Insert_Input>;
+  car_reviews?: InputMaybe<Review_Car_Review_Arr_Rel_Insert_Input>;
+  car_status?: InputMaybe<Cars_Car_Status_Obj_Rel_Insert_Input>;
   color?: InputMaybe<Scalars['String']>;
   description?: InputMaybe<Scalars['String']>;
+  fuelTypeByFuelType?: InputMaybe<Cars_Fuel_Type_Obj_Rel_Insert_Input>;
   fuel_type?: InputMaybe<Cars_Fuel_Type_Enum>;
   id?: InputMaybe<Scalars['uuid']>;
   is_approval_required?: InputMaybe<Scalars['Boolean']>;
   lender_id?: InputMaybe<Scalars['uuid']>;
+  location?: InputMaybe<Cars_Location_Obj_Rel_Insert_Input>;
   location_id?: InputMaybe<Scalars['uuid']>;
   plate_number?: InputMaybe<Scalars['String']>;
   rate?: InputMaybe<Scalars['numeric']>;
+  rental_contracts?: InputMaybe<Transaction_Rental_Contract_Arr_Rel_Insert_Input>;
   status?: InputMaybe<Cars_Car_Status_Enum>;
+  user?: InputMaybe<Users_User_Obj_Rel_Insert_Input>;
 };
 
 /** aggregate max on columns */
@@ -552,6 +783,18 @@ export type Cars_Car_Max_Fields = {
   rate?: Maybe<Scalars['numeric']>;
 };
 
+/** order by max() on columns of table "cars.car" */
+export type Cars_Car_Max_Order_By = {
+  capacity?: InputMaybe<Order_By>;
+  color?: InputMaybe<Order_By>;
+  description?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  lender_id?: InputMaybe<Order_By>;
+  location_id?: InputMaybe<Order_By>;
+  plate_number?: InputMaybe<Order_By>;
+  rate?: InputMaybe<Order_By>;
+};
+
 /** aggregate min on columns */
 export type Cars_Car_Min_Fields = {
   __typename?: 'cars_car_min_fields';
@@ -565,6 +808,18 @@ export type Cars_Car_Min_Fields = {
   rate?: Maybe<Scalars['numeric']>;
 };
 
+/** order by min() on columns of table "cars.car" */
+export type Cars_Car_Min_Order_By = {
+  capacity?: InputMaybe<Order_By>;
+  color?: InputMaybe<Order_By>;
+  description?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  lender_id?: InputMaybe<Order_By>;
+  location_id?: InputMaybe<Order_By>;
+  plate_number?: InputMaybe<Order_By>;
+  rate?: InputMaybe<Order_By>;
+};
+
 /** response of any mutation on the table "cars.car" */
 export type Cars_Car_Mutation_Response = {
   __typename?: 'cars_car_mutation_response';
@@ -572,6 +827,13 @@ export type Cars_Car_Mutation_Response = {
   affected_rows: Scalars['Int'];
   /** data from the rows affected by the mutation */
   returning: Array<Cars_Car>;
+};
+
+/** input type for inserting object relation for remote table "cars.car" */
+export type Cars_Car_Obj_Rel_Insert_Input = {
+  data: Cars_Car_Insert_Input;
+  /** on conflict condition */
+  on_conflict?: InputMaybe<Cars_Car_On_Conflict>;
 };
 
 /** on conflict condition type for table "cars.car" */
@@ -583,19 +845,28 @@ export type Cars_Car_On_Conflict = {
 
 /** Ordering options when selecting data from "cars.car". */
 export type Cars_Car_Order_By = {
+  bodyTypeByBodyType?: InputMaybe<Cars_Body_Type_Order_By>;
   body_type?: InputMaybe<Order_By>;
   capacity?: InputMaybe<Order_By>;
   car_brand?: InputMaybe<Order_By>;
+  car_brand_type?: InputMaybe<Cars_Car_Brand_Type_Order_By>;
+  car_images_aggregate?: InputMaybe<Cars_Car_Images_Aggregate_Order_By>;
+  car_reviews_aggregate?: InputMaybe<Review_Car_Review_Aggregate_Order_By>;
+  car_status?: InputMaybe<Cars_Car_Status_Order_By>;
   color?: InputMaybe<Order_By>;
   description?: InputMaybe<Order_By>;
+  fuelTypeByFuelType?: InputMaybe<Cars_Fuel_Type_Order_By>;
   fuel_type?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   is_approval_required?: InputMaybe<Order_By>;
   lender_id?: InputMaybe<Order_By>;
+  location?: InputMaybe<Cars_Location_Order_By>;
   location_id?: InputMaybe<Order_By>;
   plate_number?: InputMaybe<Order_By>;
   rate?: InputMaybe<Order_By>;
+  rental_contracts_aggregate?: InputMaybe<Transaction_Rental_Contract_Aggregate_Order_By>;
   status?: InputMaybe<Order_By>;
+  user?: InputMaybe<Users_User_Order_By>;
 };
 
 /** primary key columns input for table: cars_car */
@@ -653,7 +924,31 @@ export type Cars_Car_Set_Input = {
 /** columns and relationships of "cars.car_status" */
 export type Cars_Car_Status = {
   __typename?: 'cars_car_status';
+  /** An array relationship */
+  cars: Array<Cars_Car>;
+  /** An aggregate relationship */
+  cars_aggregate: Cars_Car_Aggregate;
   value: Scalars['String'];
+};
+
+
+/** columns and relationships of "cars.car_status" */
+export type Cars_Car_StatusCarsArgs = {
+  distinct_on?: InputMaybe<Array<Cars_Car_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Cars_Car_Order_By>>;
+  where?: InputMaybe<Cars_Car_Bool_Exp>;
+};
+
+
+/** columns and relationships of "cars.car_status" */
+export type Cars_Car_StatusCars_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Cars_Car_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Cars_Car_Order_By>>;
+  where?: InputMaybe<Cars_Car_Bool_Exp>;
 };
 
 /** aggregated selection of "cars.car_status" */
@@ -683,6 +978,7 @@ export type Cars_Car_Status_Bool_Exp = {
   _and?: InputMaybe<Array<Cars_Car_Status_Bool_Exp>>;
   _not?: InputMaybe<Cars_Car_Status_Bool_Exp>;
   _or?: InputMaybe<Array<Cars_Car_Status_Bool_Exp>>;
+  cars?: InputMaybe<Cars_Car_Bool_Exp>;
   value?: InputMaybe<String_Comparison_Exp>;
 };
 
@@ -710,6 +1006,7 @@ export type Cars_Car_Status_Enum_Comparison_Exp = {
 
 /** input type for inserting data into table "cars.car_status" */
 export type Cars_Car_Status_Insert_Input = {
+  cars?: InputMaybe<Cars_Car_Arr_Rel_Insert_Input>;
   value?: InputMaybe<Scalars['String']>;
 };
 
@@ -734,6 +1031,13 @@ export type Cars_Car_Status_Mutation_Response = {
   returning: Array<Cars_Car_Status>;
 };
 
+/** input type for inserting object relation for remote table "cars.car_status" */
+export type Cars_Car_Status_Obj_Rel_Insert_Input = {
+  data: Cars_Car_Status_Insert_Input;
+  /** on conflict condition */
+  on_conflict?: InputMaybe<Cars_Car_Status_On_Conflict>;
+};
+
 /** on conflict condition type for table "cars.car_status" */
 export type Cars_Car_Status_On_Conflict = {
   constraint: Cars_Car_Status_Constraint;
@@ -743,6 +1047,7 @@ export type Cars_Car_Status_On_Conflict = {
 
 /** Ordering options when selecting data from "cars.car_status". */
 export type Cars_Car_Status_Order_By = {
+  cars_aggregate?: InputMaybe<Cars_Car_Aggregate_Order_By>;
   value?: InputMaybe<Order_By>;
 };
 
@@ -775,11 +1080,23 @@ export type Cars_Car_Stddev_Fields = {
   rate?: Maybe<Scalars['Float']>;
 };
 
+/** order by stddev() on columns of table "cars.car" */
+export type Cars_Car_Stddev_Order_By = {
+  capacity?: InputMaybe<Order_By>;
+  rate?: InputMaybe<Order_By>;
+};
+
 /** aggregate stddev_pop on columns */
 export type Cars_Car_Stddev_Pop_Fields = {
   __typename?: 'cars_car_stddev_pop_fields';
   capacity?: Maybe<Scalars['Float']>;
   rate?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "cars.car" */
+export type Cars_Car_Stddev_Pop_Order_By = {
+  capacity?: InputMaybe<Order_By>;
+  rate?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
@@ -789,11 +1106,23 @@ export type Cars_Car_Stddev_Samp_Fields = {
   rate?: Maybe<Scalars['Float']>;
 };
 
+/** order by stddev_samp() on columns of table "cars.car" */
+export type Cars_Car_Stddev_Samp_Order_By = {
+  capacity?: InputMaybe<Order_By>;
+  rate?: InputMaybe<Order_By>;
+};
+
 /** aggregate sum on columns */
 export type Cars_Car_Sum_Fields = {
   __typename?: 'cars_car_sum_fields';
   capacity?: Maybe<Scalars['Int']>;
   rate?: Maybe<Scalars['numeric']>;
+};
+
+/** order by sum() on columns of table "cars.car" */
+export type Cars_Car_Sum_Order_By = {
+  capacity?: InputMaybe<Order_By>;
+  rate?: InputMaybe<Order_By>;
 };
 
 /** update columns of table "cars.car" */
@@ -833,11 +1162,23 @@ export type Cars_Car_Var_Pop_Fields = {
   rate?: Maybe<Scalars['Float']>;
 };
 
+/** order by var_pop() on columns of table "cars.car" */
+export type Cars_Car_Var_Pop_Order_By = {
+  capacity?: InputMaybe<Order_By>;
+  rate?: InputMaybe<Order_By>;
+};
+
 /** aggregate var_samp on columns */
 export type Cars_Car_Var_Samp_Fields = {
   __typename?: 'cars_car_var_samp_fields';
   capacity?: Maybe<Scalars['Float']>;
   rate?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_samp() on columns of table "cars.car" */
+export type Cars_Car_Var_Samp_Order_By = {
+  capacity?: InputMaybe<Order_By>;
+  rate?: InputMaybe<Order_By>;
 };
 
 /** aggregate variance on columns */
@@ -847,12 +1188,44 @@ export type Cars_Car_Variance_Fields = {
   rate?: Maybe<Scalars['Float']>;
 };
 
+/** order by variance() on columns of table "cars.car" */
+export type Cars_Car_Variance_Order_By = {
+  capacity?: InputMaybe<Order_By>;
+  rate?: InputMaybe<Order_By>;
+};
+
 /** columns and relationships of "cars.easy_box" */
 export type Cars_Easy_Box = {
   __typename?: 'cars_easy_box';
   id: Scalars['uuid'];
+  /** An array relationship */
+  keys: Array<Cars_Key>;
+  /** An aggregate relationship */
+  keys_aggregate: Cars_Key_Aggregate;
+  /** An object relationship */
+  location: Cars_Location;
   location_id: Scalars['uuid'];
   name: Scalars['String'];
+};
+
+
+/** columns and relationships of "cars.easy_box" */
+export type Cars_Easy_BoxKeysArgs = {
+  distinct_on?: InputMaybe<Array<Cars_Key_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Cars_Key_Order_By>>;
+  where?: InputMaybe<Cars_Key_Bool_Exp>;
+};
+
+
+/** columns and relationships of "cars.easy_box" */
+export type Cars_Easy_BoxKeys_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Cars_Key_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Cars_Key_Order_By>>;
+  where?: InputMaybe<Cars_Key_Bool_Exp>;
 };
 
 /** aggregated selection of "cars.easy_box" */
@@ -877,12 +1250,28 @@ export type Cars_Easy_Box_Aggregate_FieldsCountArgs = {
   distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
+/** order by aggregate values of table "cars.easy_box" */
+export type Cars_Easy_Box_Aggregate_Order_By = {
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Cars_Easy_Box_Max_Order_By>;
+  min?: InputMaybe<Cars_Easy_Box_Min_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "cars.easy_box" */
+export type Cars_Easy_Box_Arr_Rel_Insert_Input = {
+  data: Array<Cars_Easy_Box_Insert_Input>;
+  /** on conflict condition */
+  on_conflict?: InputMaybe<Cars_Easy_Box_On_Conflict>;
+};
+
 /** Boolean expression to filter rows from the table "cars.easy_box". All fields are combined with a logical 'AND'. */
 export type Cars_Easy_Box_Bool_Exp = {
   _and?: InputMaybe<Array<Cars_Easy_Box_Bool_Exp>>;
   _not?: InputMaybe<Cars_Easy_Box_Bool_Exp>;
   _or?: InputMaybe<Array<Cars_Easy_Box_Bool_Exp>>;
   id?: InputMaybe<Uuid_Comparison_Exp>;
+  keys?: InputMaybe<Cars_Key_Bool_Exp>;
+  location?: InputMaybe<Cars_Location_Bool_Exp>;
   location_id?: InputMaybe<Uuid_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
 };
@@ -896,6 +1285,8 @@ export enum Cars_Easy_Box_Constraint {
 /** input type for inserting data into table "cars.easy_box" */
 export type Cars_Easy_Box_Insert_Input = {
   id?: InputMaybe<Scalars['uuid']>;
+  keys?: InputMaybe<Cars_Key_Arr_Rel_Insert_Input>;
+  location?: InputMaybe<Cars_Location_Obj_Rel_Insert_Input>;
   location_id?: InputMaybe<Scalars['uuid']>;
   name?: InputMaybe<Scalars['String']>;
 };
@@ -908,12 +1299,26 @@ export type Cars_Easy_Box_Max_Fields = {
   name?: Maybe<Scalars['String']>;
 };
 
+/** order by max() on columns of table "cars.easy_box" */
+export type Cars_Easy_Box_Max_Order_By = {
+  id?: InputMaybe<Order_By>;
+  location_id?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+};
+
 /** aggregate min on columns */
 export type Cars_Easy_Box_Min_Fields = {
   __typename?: 'cars_easy_box_min_fields';
   id?: Maybe<Scalars['uuid']>;
   location_id?: Maybe<Scalars['uuid']>;
   name?: Maybe<Scalars['String']>;
+};
+
+/** order by min() on columns of table "cars.easy_box" */
+export type Cars_Easy_Box_Min_Order_By = {
+  id?: InputMaybe<Order_By>;
+  location_id?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "cars.easy_box" */
@@ -923,6 +1328,13 @@ export type Cars_Easy_Box_Mutation_Response = {
   affected_rows: Scalars['Int'];
   /** data from the rows affected by the mutation */
   returning: Array<Cars_Easy_Box>;
+};
+
+/** input type for inserting object relation for remote table "cars.easy_box" */
+export type Cars_Easy_Box_Obj_Rel_Insert_Input = {
+  data: Cars_Easy_Box_Insert_Input;
+  /** on conflict condition */
+  on_conflict?: InputMaybe<Cars_Easy_Box_On_Conflict>;
 };
 
 /** on conflict condition type for table "cars.easy_box" */
@@ -935,6 +1347,8 @@ export type Cars_Easy_Box_On_Conflict = {
 /** Ordering options when selecting data from "cars.easy_box". */
 export type Cars_Easy_Box_Order_By = {
   id?: InputMaybe<Order_By>;
+  keys_aggregate?: InputMaybe<Cars_Key_Aggregate_Order_By>;
+  location?: InputMaybe<Cars_Location_Order_By>;
   location_id?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
 };
@@ -974,7 +1388,31 @@ export enum Cars_Easy_Box_Update_Column {
 /** columns and relationships of "cars.fuel_type" */
 export type Cars_Fuel_Type = {
   __typename?: 'cars_fuel_type';
+  /** An array relationship */
+  cars: Array<Cars_Car>;
+  /** An aggregate relationship */
+  cars_aggregate: Cars_Car_Aggregate;
   value: Scalars['String'];
+};
+
+
+/** columns and relationships of "cars.fuel_type" */
+export type Cars_Fuel_TypeCarsArgs = {
+  distinct_on?: InputMaybe<Array<Cars_Car_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Cars_Car_Order_By>>;
+  where?: InputMaybe<Cars_Car_Bool_Exp>;
+};
+
+
+/** columns and relationships of "cars.fuel_type" */
+export type Cars_Fuel_TypeCars_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Cars_Car_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Cars_Car_Order_By>>;
+  where?: InputMaybe<Cars_Car_Bool_Exp>;
 };
 
 /** aggregated selection of "cars.fuel_type" */
@@ -1004,6 +1442,7 @@ export type Cars_Fuel_Type_Bool_Exp = {
   _and?: InputMaybe<Array<Cars_Fuel_Type_Bool_Exp>>;
   _not?: InputMaybe<Cars_Fuel_Type_Bool_Exp>;
   _or?: InputMaybe<Array<Cars_Fuel_Type_Bool_Exp>>;
+  cars?: InputMaybe<Cars_Car_Bool_Exp>;
   value?: InputMaybe<String_Comparison_Exp>;
 };
 
@@ -1030,6 +1469,7 @@ export type Cars_Fuel_Type_Enum_Comparison_Exp = {
 
 /** input type for inserting data into table "cars.fuel_type" */
 export type Cars_Fuel_Type_Insert_Input = {
+  cars?: InputMaybe<Cars_Car_Arr_Rel_Insert_Input>;
   value?: InputMaybe<Scalars['String']>;
 };
 
@@ -1054,6 +1494,13 @@ export type Cars_Fuel_Type_Mutation_Response = {
   returning: Array<Cars_Fuel_Type>;
 };
 
+/** input type for inserting object relation for remote table "cars.fuel_type" */
+export type Cars_Fuel_Type_Obj_Rel_Insert_Input = {
+  data: Cars_Fuel_Type_Insert_Input;
+  /** on conflict condition */
+  on_conflict?: InputMaybe<Cars_Fuel_Type_On_Conflict>;
+};
+
 /** on conflict condition type for table "cars.fuel_type" */
 export type Cars_Fuel_Type_On_Conflict = {
   constraint: Cars_Fuel_Type_Constraint;
@@ -1063,6 +1510,7 @@ export type Cars_Fuel_Type_On_Conflict = {
 
 /** Ordering options when selecting data from "cars.fuel_type". */
 export type Cars_Fuel_Type_Order_By = {
+  cars_aggregate?: InputMaybe<Cars_Car_Aggregate_Order_By>;
   value?: InputMaybe<Order_By>;
 };
 
@@ -1091,6 +1539,8 @@ export enum Cars_Fuel_Type_Update_Column {
 /** columns and relationships of "cars.key" */
 export type Cars_Key = {
   __typename?: 'cars_key';
+  /** An object relationship */
+  easy_box: Cars_Easy_Box;
   easybox_transaction_id: Scalars['String'];
   id: Scalars['uuid'];
   pickup_point: Scalars['uuid'];
@@ -1119,11 +1569,26 @@ export type Cars_Key_Aggregate_FieldsCountArgs = {
   distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
+/** order by aggregate values of table "cars.key" */
+export type Cars_Key_Aggregate_Order_By = {
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Cars_Key_Max_Order_By>;
+  min?: InputMaybe<Cars_Key_Min_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "cars.key" */
+export type Cars_Key_Arr_Rel_Insert_Input = {
+  data: Array<Cars_Key_Insert_Input>;
+  /** on conflict condition */
+  on_conflict?: InputMaybe<Cars_Key_On_Conflict>;
+};
+
 /** Boolean expression to filter rows from the table "cars.key". All fields are combined with a logical 'AND'. */
 export type Cars_Key_Bool_Exp = {
   _and?: InputMaybe<Array<Cars_Key_Bool_Exp>>;
   _not?: InputMaybe<Cars_Key_Bool_Exp>;
   _or?: InputMaybe<Array<Cars_Key_Bool_Exp>>;
+  easy_box?: InputMaybe<Cars_Easy_Box_Bool_Exp>;
   easybox_transaction_id?: InputMaybe<String_Comparison_Exp>;
   id?: InputMaybe<Uuid_Comparison_Exp>;
   pickup_point?: InputMaybe<Uuid_Comparison_Exp>;
@@ -1138,6 +1603,7 @@ export enum Cars_Key_Constraint {
 
 /** input type for inserting data into table "cars.key" */
 export type Cars_Key_Insert_Input = {
+  easy_box?: InputMaybe<Cars_Easy_Box_Obj_Rel_Insert_Input>;
   easybox_transaction_id?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['uuid']>;
   pickup_point?: InputMaybe<Scalars['uuid']>;
@@ -1153,6 +1619,14 @@ export type Cars_Key_Max_Fields = {
   unlock_passcode?: Maybe<Scalars['String']>;
 };
 
+/** order by max() on columns of table "cars.key" */
+export type Cars_Key_Max_Order_By = {
+  easybox_transaction_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  pickup_point?: InputMaybe<Order_By>;
+  unlock_passcode?: InputMaybe<Order_By>;
+};
+
 /** aggregate min on columns */
 export type Cars_Key_Min_Fields = {
   __typename?: 'cars_key_min_fields';
@@ -1160,6 +1634,14 @@ export type Cars_Key_Min_Fields = {
   id?: Maybe<Scalars['uuid']>;
   pickup_point?: Maybe<Scalars['uuid']>;
   unlock_passcode?: Maybe<Scalars['String']>;
+};
+
+/** order by min() on columns of table "cars.key" */
+export type Cars_Key_Min_Order_By = {
+  easybox_transaction_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  pickup_point?: InputMaybe<Order_By>;
+  unlock_passcode?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "cars.key" */
@@ -1180,6 +1662,7 @@ export type Cars_Key_On_Conflict = {
 
 /** Ordering options when selecting data from "cars.key". */
 export type Cars_Key_Order_By = {
+  easy_box?: InputMaybe<Cars_Easy_Box_Order_By>;
   easybox_transaction_id?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   pickup_point?: InputMaybe<Order_By>;
@@ -1232,12 +1715,84 @@ export enum Cars_Key_Update_Column {
  */
 export type Cars_Location = {
   __typename?: 'cars_location';
+  /** An array relationship */
+  cars: Array<Cars_Car>;
+  /** An aggregate relationship */
+  cars_aggregate: Cars_Car_Aggregate;
   city: Scalars['String'];
   country: Scalars['String'];
+  /** An array relationship */
+  easy_boxes: Array<Cars_Easy_Box>;
+  /** An aggregate relationship */
+  easy_boxes_aggregate: Cars_Easy_Box_Aggregate;
   id: Scalars['uuid'];
   lat: Scalars['numeric'];
   long: Scalars['numeric'];
   state: Scalars['String'];
+};
+
+
+/**
+ * location
+ *
+ *
+ * columns and relationships of "cars.location"
+ *
+ */
+export type Cars_LocationCarsArgs = {
+  distinct_on?: InputMaybe<Array<Cars_Car_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Cars_Car_Order_By>>;
+  where?: InputMaybe<Cars_Car_Bool_Exp>;
+};
+
+
+/**
+ * location
+ *
+ *
+ * columns and relationships of "cars.location"
+ *
+ */
+export type Cars_LocationCars_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Cars_Car_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Cars_Car_Order_By>>;
+  where?: InputMaybe<Cars_Car_Bool_Exp>;
+};
+
+
+/**
+ * location
+ *
+ *
+ * columns and relationships of "cars.location"
+ *
+ */
+export type Cars_LocationEasy_BoxesArgs = {
+  distinct_on?: InputMaybe<Array<Cars_Easy_Box_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Cars_Easy_Box_Order_By>>;
+  where?: InputMaybe<Cars_Easy_Box_Bool_Exp>;
+};
+
+
+/**
+ * location
+ *
+ *
+ * columns and relationships of "cars.location"
+ *
+ */
+export type Cars_LocationEasy_Boxes_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Cars_Easy_Box_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Cars_Easy_Box_Order_By>>;
+  where?: InputMaybe<Cars_Easy_Box_Bool_Exp>;
 };
 
 /** aggregated selection of "cars.location" */
@@ -1282,8 +1837,10 @@ export type Cars_Location_Bool_Exp = {
   _and?: InputMaybe<Array<Cars_Location_Bool_Exp>>;
   _not?: InputMaybe<Cars_Location_Bool_Exp>;
   _or?: InputMaybe<Array<Cars_Location_Bool_Exp>>;
+  cars?: InputMaybe<Cars_Car_Bool_Exp>;
   city?: InputMaybe<String_Comparison_Exp>;
   country?: InputMaybe<String_Comparison_Exp>;
+  easy_boxes?: InputMaybe<Cars_Easy_Box_Bool_Exp>;
   id?: InputMaybe<Uuid_Comparison_Exp>;
   lat?: InputMaybe<Numeric_Comparison_Exp>;
   long?: InputMaybe<Numeric_Comparison_Exp>;
@@ -1302,6 +1859,8 @@ export type Cars_Location_History = {
   id: Scalars['uuid'];
   lat: Scalars['numeric'];
   long: Scalars['numeric'];
+  /** An object relationship */
+  rental_contract: Transaction_Rental_Contract;
   rental_contract_id: Scalars['uuid'];
   timestamp: Scalars['date'];
 };
@@ -1336,11 +1895,39 @@ export type Cars_Location_History_Aggregate_FieldsCountArgs = {
   distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
+/** order by aggregate values of table "cars.location_history" */
+export type Cars_Location_History_Aggregate_Order_By = {
+  avg?: InputMaybe<Cars_Location_History_Avg_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Cars_Location_History_Max_Order_By>;
+  min?: InputMaybe<Cars_Location_History_Min_Order_By>;
+  stddev?: InputMaybe<Cars_Location_History_Stddev_Order_By>;
+  stddev_pop?: InputMaybe<Cars_Location_History_Stddev_Pop_Order_By>;
+  stddev_samp?: InputMaybe<Cars_Location_History_Stddev_Samp_Order_By>;
+  sum?: InputMaybe<Cars_Location_History_Sum_Order_By>;
+  var_pop?: InputMaybe<Cars_Location_History_Var_Pop_Order_By>;
+  var_samp?: InputMaybe<Cars_Location_History_Var_Samp_Order_By>;
+  variance?: InputMaybe<Cars_Location_History_Variance_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "cars.location_history" */
+export type Cars_Location_History_Arr_Rel_Insert_Input = {
+  data: Array<Cars_Location_History_Insert_Input>;
+  /** on conflict condition */
+  on_conflict?: InputMaybe<Cars_Location_History_On_Conflict>;
+};
+
 /** aggregate avg on columns */
 export type Cars_Location_History_Avg_Fields = {
   __typename?: 'cars_location_history_avg_fields';
   lat?: Maybe<Scalars['Float']>;
   long?: Maybe<Scalars['Float']>;
+};
+
+/** order by avg() on columns of table "cars.location_history" */
+export type Cars_Location_History_Avg_Order_By = {
+  lat?: InputMaybe<Order_By>;
+  long?: InputMaybe<Order_By>;
 };
 
 /** Boolean expression to filter rows from the table "cars.location_history". All fields are combined with a logical 'AND'. */
@@ -1351,6 +1938,7 @@ export type Cars_Location_History_Bool_Exp = {
   id?: InputMaybe<Uuid_Comparison_Exp>;
   lat?: InputMaybe<Numeric_Comparison_Exp>;
   long?: InputMaybe<Numeric_Comparison_Exp>;
+  rental_contract?: InputMaybe<Transaction_Rental_Contract_Bool_Exp>;
   rental_contract_id?: InputMaybe<Uuid_Comparison_Exp>;
   timestamp?: InputMaybe<Date_Comparison_Exp>;
 };
@@ -1372,6 +1960,7 @@ export type Cars_Location_History_Insert_Input = {
   id?: InputMaybe<Scalars['uuid']>;
   lat?: InputMaybe<Scalars['numeric']>;
   long?: InputMaybe<Scalars['numeric']>;
+  rental_contract?: InputMaybe<Transaction_Rental_Contract_Obj_Rel_Insert_Input>;
   rental_contract_id?: InputMaybe<Scalars['uuid']>;
   timestamp?: InputMaybe<Scalars['date']>;
 };
@@ -1386,6 +1975,15 @@ export type Cars_Location_History_Max_Fields = {
   timestamp?: Maybe<Scalars['date']>;
 };
 
+/** order by max() on columns of table "cars.location_history" */
+export type Cars_Location_History_Max_Order_By = {
+  id?: InputMaybe<Order_By>;
+  lat?: InputMaybe<Order_By>;
+  long?: InputMaybe<Order_By>;
+  rental_contract_id?: InputMaybe<Order_By>;
+  timestamp?: InputMaybe<Order_By>;
+};
+
 /** aggregate min on columns */
 export type Cars_Location_History_Min_Fields = {
   __typename?: 'cars_location_history_min_fields';
@@ -1394,6 +1992,15 @@ export type Cars_Location_History_Min_Fields = {
   long?: Maybe<Scalars['numeric']>;
   rental_contract_id?: Maybe<Scalars['uuid']>;
   timestamp?: Maybe<Scalars['date']>;
+};
+
+/** order by min() on columns of table "cars.location_history" */
+export type Cars_Location_History_Min_Order_By = {
+  id?: InputMaybe<Order_By>;
+  lat?: InputMaybe<Order_By>;
+  long?: InputMaybe<Order_By>;
+  rental_contract_id?: InputMaybe<Order_By>;
+  timestamp?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "cars.location_history" */
@@ -1417,6 +2024,7 @@ export type Cars_Location_History_Order_By = {
   id?: InputMaybe<Order_By>;
   lat?: InputMaybe<Order_By>;
   long?: InputMaybe<Order_By>;
+  rental_contract?: InputMaybe<Transaction_Rental_Contract_Order_By>;
   rental_contract_id?: InputMaybe<Order_By>;
   timestamp?: InputMaybe<Order_By>;
 };
@@ -1456,11 +2064,23 @@ export type Cars_Location_History_Stddev_Fields = {
   long?: Maybe<Scalars['Float']>;
 };
 
+/** order by stddev() on columns of table "cars.location_history" */
+export type Cars_Location_History_Stddev_Order_By = {
+  lat?: InputMaybe<Order_By>;
+  long?: InputMaybe<Order_By>;
+};
+
 /** aggregate stddev_pop on columns */
 export type Cars_Location_History_Stddev_Pop_Fields = {
   __typename?: 'cars_location_history_stddev_pop_fields';
   lat?: Maybe<Scalars['Float']>;
   long?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "cars.location_history" */
+export type Cars_Location_History_Stddev_Pop_Order_By = {
+  lat?: InputMaybe<Order_By>;
+  long?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
@@ -1470,11 +2090,23 @@ export type Cars_Location_History_Stddev_Samp_Fields = {
   long?: Maybe<Scalars['Float']>;
 };
 
+/** order by stddev_samp() on columns of table "cars.location_history" */
+export type Cars_Location_History_Stddev_Samp_Order_By = {
+  lat?: InputMaybe<Order_By>;
+  long?: InputMaybe<Order_By>;
+};
+
 /** aggregate sum on columns */
 export type Cars_Location_History_Sum_Fields = {
   __typename?: 'cars_location_history_sum_fields';
   lat?: Maybe<Scalars['numeric']>;
   long?: Maybe<Scalars['numeric']>;
+};
+
+/** order by sum() on columns of table "cars.location_history" */
+export type Cars_Location_History_Sum_Order_By = {
+  lat?: InputMaybe<Order_By>;
+  long?: InputMaybe<Order_By>;
 };
 
 /** update columns of table "cars.location_history" */
@@ -1498,6 +2130,12 @@ export type Cars_Location_History_Var_Pop_Fields = {
   long?: Maybe<Scalars['Float']>;
 };
 
+/** order by var_pop() on columns of table "cars.location_history" */
+export type Cars_Location_History_Var_Pop_Order_By = {
+  lat?: InputMaybe<Order_By>;
+  long?: InputMaybe<Order_By>;
+};
+
 /** aggregate var_samp on columns */
 export type Cars_Location_History_Var_Samp_Fields = {
   __typename?: 'cars_location_history_var_samp_fields';
@@ -1505,11 +2143,23 @@ export type Cars_Location_History_Var_Samp_Fields = {
   long?: Maybe<Scalars['Float']>;
 };
 
+/** order by var_samp() on columns of table "cars.location_history" */
+export type Cars_Location_History_Var_Samp_Order_By = {
+  lat?: InputMaybe<Order_By>;
+  long?: InputMaybe<Order_By>;
+};
+
 /** aggregate variance on columns */
 export type Cars_Location_History_Variance_Fields = {
   __typename?: 'cars_location_history_variance_fields';
   lat?: Maybe<Scalars['Float']>;
   long?: Maybe<Scalars['Float']>;
+};
+
+/** order by variance() on columns of table "cars.location_history" */
+export type Cars_Location_History_Variance_Order_By = {
+  lat?: InputMaybe<Order_By>;
+  long?: InputMaybe<Order_By>;
 };
 
 /** input type for incrementing numeric columns in table "cars.location" */
@@ -1520,8 +2170,10 @@ export type Cars_Location_Inc_Input = {
 
 /** input type for inserting data into table "cars.location" */
 export type Cars_Location_Insert_Input = {
+  cars?: InputMaybe<Cars_Car_Arr_Rel_Insert_Input>;
   city?: InputMaybe<Scalars['String']>;
   country?: InputMaybe<Scalars['String']>;
+  easy_boxes?: InputMaybe<Cars_Easy_Box_Arr_Rel_Insert_Input>;
   id?: InputMaybe<Scalars['uuid']>;
   lat?: InputMaybe<Scalars['numeric']>;
   long?: InputMaybe<Scalars['numeric']>;
@@ -1559,6 +2211,13 @@ export type Cars_Location_Mutation_Response = {
   returning: Array<Cars_Location>;
 };
 
+/** input type for inserting object relation for remote table "cars.location" */
+export type Cars_Location_Obj_Rel_Insert_Input = {
+  data: Cars_Location_Insert_Input;
+  /** on conflict condition */
+  on_conflict?: InputMaybe<Cars_Location_On_Conflict>;
+};
+
 /** on conflict condition type for table "cars.location" */
 export type Cars_Location_On_Conflict = {
   constraint: Cars_Location_Constraint;
@@ -1568,8 +2227,10 @@ export type Cars_Location_On_Conflict = {
 
 /** Ordering options when selecting data from "cars.location". */
 export type Cars_Location_Order_By = {
+  cars_aggregate?: InputMaybe<Cars_Car_Aggregate_Order_By>;
   city?: InputMaybe<Order_By>;
   country?: InputMaybe<Order_By>;
+  easy_boxes_aggregate?: InputMaybe<Cars_Easy_Box_Aggregate_Order_By>;
   id?: InputMaybe<Order_By>;
   lat?: InputMaybe<Order_By>;
   long?: InputMaybe<Order_By>;
@@ -3601,10 +4262,16 @@ export type Query_RootUsers_User_Roles_By_PkArgs = {
 /** columns and relationships of "review.car_review" */
 export type Review_Car_Review = {
   __typename?: 'review_car_review';
+  /** An object relationship */
+  car: Cars_Car;
   car_id: Scalars['uuid'];
   id: Scalars['uuid'];
+  /** An object relationship */
+  review: Review_Review;
   review_id: Scalars['uuid'];
   reviewer_id: Scalars['uuid'];
+  /** An object relationship */
+  user: Users_User;
 };
 
 /** aggregated selection of "review.car_review" */
@@ -3629,15 +4296,32 @@ export type Review_Car_Review_Aggregate_FieldsCountArgs = {
   distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
+/** order by aggregate values of table "review.car_review" */
+export type Review_Car_Review_Aggregate_Order_By = {
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Review_Car_Review_Max_Order_By>;
+  min?: InputMaybe<Review_Car_Review_Min_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "review.car_review" */
+export type Review_Car_Review_Arr_Rel_Insert_Input = {
+  data: Array<Review_Car_Review_Insert_Input>;
+  /** on conflict condition */
+  on_conflict?: InputMaybe<Review_Car_Review_On_Conflict>;
+};
+
 /** Boolean expression to filter rows from the table "review.car_review". All fields are combined with a logical 'AND'. */
 export type Review_Car_Review_Bool_Exp = {
   _and?: InputMaybe<Array<Review_Car_Review_Bool_Exp>>;
   _not?: InputMaybe<Review_Car_Review_Bool_Exp>;
   _or?: InputMaybe<Array<Review_Car_Review_Bool_Exp>>;
+  car?: InputMaybe<Cars_Car_Bool_Exp>;
   car_id?: InputMaybe<Uuid_Comparison_Exp>;
   id?: InputMaybe<Uuid_Comparison_Exp>;
+  review?: InputMaybe<Review_Review_Bool_Exp>;
   review_id?: InputMaybe<Uuid_Comparison_Exp>;
   reviewer_id?: InputMaybe<Uuid_Comparison_Exp>;
+  user?: InputMaybe<Users_User_Bool_Exp>;
 };
 
 /** unique or primary key constraints on table "review.car_review" */
@@ -3648,10 +4332,13 @@ export enum Review_Car_Review_Constraint {
 
 /** input type for inserting data into table "review.car_review" */
 export type Review_Car_Review_Insert_Input = {
+  car?: InputMaybe<Cars_Car_Obj_Rel_Insert_Input>;
   car_id?: InputMaybe<Scalars['uuid']>;
   id?: InputMaybe<Scalars['uuid']>;
+  review?: InputMaybe<Review_Review_Obj_Rel_Insert_Input>;
   review_id?: InputMaybe<Scalars['uuid']>;
   reviewer_id?: InputMaybe<Scalars['uuid']>;
+  user?: InputMaybe<Users_User_Obj_Rel_Insert_Input>;
 };
 
 /** aggregate max on columns */
@@ -3663,6 +4350,14 @@ export type Review_Car_Review_Max_Fields = {
   reviewer_id?: Maybe<Scalars['uuid']>;
 };
 
+/** order by max() on columns of table "review.car_review" */
+export type Review_Car_Review_Max_Order_By = {
+  car_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  review_id?: InputMaybe<Order_By>;
+  reviewer_id?: InputMaybe<Order_By>;
+};
+
 /** aggregate min on columns */
 export type Review_Car_Review_Min_Fields = {
   __typename?: 'review_car_review_min_fields';
@@ -3670,6 +4365,14 @@ export type Review_Car_Review_Min_Fields = {
   id?: Maybe<Scalars['uuid']>;
   review_id?: Maybe<Scalars['uuid']>;
   reviewer_id?: Maybe<Scalars['uuid']>;
+};
+
+/** order by min() on columns of table "review.car_review" */
+export type Review_Car_Review_Min_Order_By = {
+  car_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  review_id?: InputMaybe<Order_By>;
+  reviewer_id?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "review.car_review" */
@@ -3690,10 +4393,13 @@ export type Review_Car_Review_On_Conflict = {
 
 /** Ordering options when selecting data from "review.car_review". */
 export type Review_Car_Review_Order_By = {
+  car?: InputMaybe<Cars_Car_Order_By>;
   car_id?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  review?: InputMaybe<Review_Review_Order_By>;
   review_id?: InputMaybe<Order_By>;
   reviewer_id?: InputMaybe<Order_By>;
+  user?: InputMaybe<Users_User_Order_By>;
 };
 
 /** primary key columns input for table: review_car_review */
@@ -3736,11 +4442,83 @@ export enum Review_Car_Review_Update_Column {
 /** columns and relationships of "review.review" */
 export type Review_Review = {
   __typename?: 'review_review';
+  /** An array relationship */
+  car_reviews: Array<Review_Car_Review>;
+  /** An aggregate relationship */
+  car_reviews_aggregate: Review_Car_Review_Aggregate;
   date: Scalars['date'];
   description: Scalars['String'];
   id: Scalars['uuid'];
+  /** An array relationship */
+  review_images: Array<Review_Review_Images>;
+  /** An aggregate relationship */
+  review_images_aggregate: Review_Review_Images_Aggregate;
   score: Scalars['numeric'];
   title: Scalars['String'];
+  /** An array relationship */
+  user_reviews: Array<Review_User_Review>;
+  /** An aggregate relationship */
+  user_reviews_aggregate: Review_User_Review_Aggregate;
+};
+
+
+/** columns and relationships of "review.review" */
+export type Review_ReviewCar_ReviewsArgs = {
+  distinct_on?: InputMaybe<Array<Review_Car_Review_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Review_Car_Review_Order_By>>;
+  where?: InputMaybe<Review_Car_Review_Bool_Exp>;
+};
+
+
+/** columns and relationships of "review.review" */
+export type Review_ReviewCar_Reviews_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Review_Car_Review_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Review_Car_Review_Order_By>>;
+  where?: InputMaybe<Review_Car_Review_Bool_Exp>;
+};
+
+
+/** columns and relationships of "review.review" */
+export type Review_ReviewReview_ImagesArgs = {
+  distinct_on?: InputMaybe<Array<Review_Review_Images_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Review_Review_Images_Order_By>>;
+  where?: InputMaybe<Review_Review_Images_Bool_Exp>;
+};
+
+
+/** columns and relationships of "review.review" */
+export type Review_ReviewReview_Images_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Review_Review_Images_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Review_Review_Images_Order_By>>;
+  where?: InputMaybe<Review_Review_Images_Bool_Exp>;
+};
+
+
+/** columns and relationships of "review.review" */
+export type Review_ReviewUser_ReviewsArgs = {
+  distinct_on?: InputMaybe<Array<Review_User_Review_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Review_User_Review_Order_By>>;
+  where?: InputMaybe<Review_User_Review_Bool_Exp>;
+};
+
+
+/** columns and relationships of "review.review" */
+export type Review_ReviewUser_Reviews_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Review_User_Review_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Review_User_Review_Order_By>>;
+  where?: InputMaybe<Review_User_Review_Bool_Exp>;
 };
 
 /** aggregated selection of "review.review" */
@@ -3784,11 +4562,14 @@ export type Review_Review_Bool_Exp = {
   _and?: InputMaybe<Array<Review_Review_Bool_Exp>>;
   _not?: InputMaybe<Review_Review_Bool_Exp>;
   _or?: InputMaybe<Array<Review_Review_Bool_Exp>>;
+  car_reviews?: InputMaybe<Review_Car_Review_Bool_Exp>;
   date?: InputMaybe<Date_Comparison_Exp>;
   description?: InputMaybe<String_Comparison_Exp>;
   id?: InputMaybe<Uuid_Comparison_Exp>;
+  review_images?: InputMaybe<Review_Review_Images_Bool_Exp>;
   score?: InputMaybe<Numeric_Comparison_Exp>;
   title?: InputMaybe<String_Comparison_Exp>;
+  user_reviews?: InputMaybe<Review_User_Review_Bool_Exp>;
 };
 
 /** unique or primary key constraints on table "review.review" */
@@ -3802,6 +4583,8 @@ export type Review_Review_Images = {
   __typename?: 'review_review_images';
   id: Scalars['uuid'];
   image_url: Scalars['String'];
+  /** An object relationship */
+  review?: Maybe<Review_Review>;
   review_id?: Maybe<Scalars['uuid']>;
 };
 
@@ -3827,6 +4610,20 @@ export type Review_Review_Images_Aggregate_FieldsCountArgs = {
   distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
+/** order by aggregate values of table "review.review_images" */
+export type Review_Review_Images_Aggregate_Order_By = {
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Review_Review_Images_Max_Order_By>;
+  min?: InputMaybe<Review_Review_Images_Min_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "review.review_images" */
+export type Review_Review_Images_Arr_Rel_Insert_Input = {
+  data: Array<Review_Review_Images_Insert_Input>;
+  /** on conflict condition */
+  on_conflict?: InputMaybe<Review_Review_Images_On_Conflict>;
+};
+
 /** Boolean expression to filter rows from the table "review.review_images". All fields are combined with a logical 'AND'. */
 export type Review_Review_Images_Bool_Exp = {
   _and?: InputMaybe<Array<Review_Review_Images_Bool_Exp>>;
@@ -3834,6 +4631,7 @@ export type Review_Review_Images_Bool_Exp = {
   _or?: InputMaybe<Array<Review_Review_Images_Bool_Exp>>;
   id?: InputMaybe<Uuid_Comparison_Exp>;
   image_url?: InputMaybe<String_Comparison_Exp>;
+  review?: InputMaybe<Review_Review_Bool_Exp>;
   review_id?: InputMaybe<Uuid_Comparison_Exp>;
 };
 
@@ -3847,6 +4645,7 @@ export enum Review_Review_Images_Constraint {
 export type Review_Review_Images_Insert_Input = {
   id?: InputMaybe<Scalars['uuid']>;
   image_url?: InputMaybe<Scalars['String']>;
+  review?: InputMaybe<Review_Review_Obj_Rel_Insert_Input>;
   review_id?: InputMaybe<Scalars['uuid']>;
 };
 
@@ -3858,12 +4657,26 @@ export type Review_Review_Images_Max_Fields = {
   review_id?: Maybe<Scalars['uuid']>;
 };
 
+/** order by max() on columns of table "review.review_images" */
+export type Review_Review_Images_Max_Order_By = {
+  id?: InputMaybe<Order_By>;
+  image_url?: InputMaybe<Order_By>;
+  review_id?: InputMaybe<Order_By>;
+};
+
 /** aggregate min on columns */
 export type Review_Review_Images_Min_Fields = {
   __typename?: 'review_review_images_min_fields';
   id?: Maybe<Scalars['uuid']>;
   image_url?: Maybe<Scalars['String']>;
   review_id?: Maybe<Scalars['uuid']>;
+};
+
+/** order by min() on columns of table "review.review_images" */
+export type Review_Review_Images_Min_Order_By = {
+  id?: InputMaybe<Order_By>;
+  image_url?: InputMaybe<Order_By>;
+  review_id?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "review.review_images" */
@@ -3886,6 +4699,7 @@ export type Review_Review_Images_On_Conflict = {
 export type Review_Review_Images_Order_By = {
   id?: InputMaybe<Order_By>;
   image_url?: InputMaybe<Order_By>;
+  review?: InputMaybe<Review_Review_Order_By>;
   review_id?: InputMaybe<Order_By>;
 };
 
@@ -3928,11 +4742,14 @@ export type Review_Review_Inc_Input = {
 
 /** input type for inserting data into table "review.review" */
 export type Review_Review_Insert_Input = {
+  car_reviews?: InputMaybe<Review_Car_Review_Arr_Rel_Insert_Input>;
   date?: InputMaybe<Scalars['date']>;
   description?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['uuid']>;
+  review_images?: InputMaybe<Review_Review_Images_Arr_Rel_Insert_Input>;
   score?: InputMaybe<Scalars['numeric']>;
   title?: InputMaybe<Scalars['String']>;
+  user_reviews?: InputMaybe<Review_User_Review_Arr_Rel_Insert_Input>;
 };
 
 /** aggregate max on columns */
@@ -3964,6 +4781,13 @@ export type Review_Review_Mutation_Response = {
   returning: Array<Review_Review>;
 };
 
+/** input type for inserting object relation for remote table "review.review" */
+export type Review_Review_Obj_Rel_Insert_Input = {
+  data: Review_Review_Insert_Input;
+  /** on conflict condition */
+  on_conflict?: InputMaybe<Review_Review_On_Conflict>;
+};
+
 /** on conflict condition type for table "review.review" */
 export type Review_Review_On_Conflict = {
   constraint: Review_Review_Constraint;
@@ -3973,11 +4797,14 @@ export type Review_Review_On_Conflict = {
 
 /** Ordering options when selecting data from "review.review". */
 export type Review_Review_Order_By = {
+  car_reviews_aggregate?: InputMaybe<Review_Car_Review_Aggregate_Order_By>;
   date?: InputMaybe<Order_By>;
   description?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  review_images_aggregate?: InputMaybe<Review_Review_Images_Aggregate_Order_By>;
   score?: InputMaybe<Order_By>;
   title?: InputMaybe<Order_By>;
+  user_reviews_aggregate?: InputMaybe<Review_User_Review_Aggregate_Order_By>;
 };
 
 /** primary key columns input for table: review_review */
@@ -4070,7 +4897,13 @@ export type Review_User_Review = {
   by?: Maybe<Scalars['uuid']>;
   for?: Maybe<Scalars['uuid']>;
   id: Scalars['uuid'];
+  /** An object relationship */
+  review?: Maybe<Review_Review>;
   review_id?: Maybe<Scalars['uuid']>;
+  /** An object relationship */
+  user?: Maybe<Users_User>;
+  /** An object relationship */
+  userByFor?: Maybe<Users_User>;
 };
 
 /** aggregated selection of "review.user_review" */
@@ -4095,6 +4928,20 @@ export type Review_User_Review_Aggregate_FieldsCountArgs = {
   distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
+/** order by aggregate values of table "review.user_review" */
+export type Review_User_Review_Aggregate_Order_By = {
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Review_User_Review_Max_Order_By>;
+  min?: InputMaybe<Review_User_Review_Min_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "review.user_review" */
+export type Review_User_Review_Arr_Rel_Insert_Input = {
+  data: Array<Review_User_Review_Insert_Input>;
+  /** on conflict condition */
+  on_conflict?: InputMaybe<Review_User_Review_On_Conflict>;
+};
+
 /** Boolean expression to filter rows from the table "review.user_review". All fields are combined with a logical 'AND'. */
 export type Review_User_Review_Bool_Exp = {
   _and?: InputMaybe<Array<Review_User_Review_Bool_Exp>>;
@@ -4103,7 +4950,10 @@ export type Review_User_Review_Bool_Exp = {
   by?: InputMaybe<Uuid_Comparison_Exp>;
   for?: InputMaybe<Uuid_Comparison_Exp>;
   id?: InputMaybe<Uuid_Comparison_Exp>;
+  review?: InputMaybe<Review_Review_Bool_Exp>;
   review_id?: InputMaybe<Uuid_Comparison_Exp>;
+  user?: InputMaybe<Users_User_Bool_Exp>;
+  userByFor?: InputMaybe<Users_User_Bool_Exp>;
 };
 
 /** unique or primary key constraints on table "review.user_review" */
@@ -4117,7 +4967,10 @@ export type Review_User_Review_Insert_Input = {
   by?: InputMaybe<Scalars['uuid']>;
   for?: InputMaybe<Scalars['uuid']>;
   id?: InputMaybe<Scalars['uuid']>;
+  review?: InputMaybe<Review_Review_Obj_Rel_Insert_Input>;
   review_id?: InputMaybe<Scalars['uuid']>;
+  user?: InputMaybe<Users_User_Obj_Rel_Insert_Input>;
+  userByFor?: InputMaybe<Users_User_Obj_Rel_Insert_Input>;
 };
 
 /** aggregate max on columns */
@@ -4129,6 +4982,14 @@ export type Review_User_Review_Max_Fields = {
   review_id?: Maybe<Scalars['uuid']>;
 };
 
+/** order by max() on columns of table "review.user_review" */
+export type Review_User_Review_Max_Order_By = {
+  by?: InputMaybe<Order_By>;
+  for?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  review_id?: InputMaybe<Order_By>;
+};
+
 /** aggregate min on columns */
 export type Review_User_Review_Min_Fields = {
   __typename?: 'review_user_review_min_fields';
@@ -4136,6 +4997,14 @@ export type Review_User_Review_Min_Fields = {
   for?: Maybe<Scalars['uuid']>;
   id?: Maybe<Scalars['uuid']>;
   review_id?: Maybe<Scalars['uuid']>;
+};
+
+/** order by min() on columns of table "review.user_review" */
+export type Review_User_Review_Min_Order_By = {
+  by?: InputMaybe<Order_By>;
+  for?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  review_id?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "review.user_review" */
@@ -4159,7 +5028,10 @@ export type Review_User_Review_Order_By = {
   by?: InputMaybe<Order_By>;
   for?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  review?: InputMaybe<Review_Review_Order_By>;
   review_id?: InputMaybe<Order_By>;
+  user?: InputMaybe<Users_User_Order_By>;
+  userByFor?: InputMaybe<Users_User_Order_By>;
 };
 
 /** primary key columns input for table: review_user_review */
@@ -4874,13 +5746,45 @@ export type Subscription_RootUsers_User_Roles_By_PkArgs = {
 export type Transaction_Rental_Contract = {
   __typename?: 'transaction_rental_contract';
   approved: Scalars['Boolean'];
+  /** An object relationship */
+  car: Cars_Car;
   car_id: Scalars['uuid'];
   id: Scalars['uuid'];
   lender_id: Scalars['uuid'];
+  /** An array relationship */
+  location_histories: Array<Cars_Location_History>;
+  /** An aggregate relationship */
+  location_histories_aggregate: Cars_Location_History_Aggregate;
   rental_date: Scalars['date'];
+  /** An object relationship */
+  rental_status: Transaction_Rental_Status;
   renter_id: Scalars['uuid'];
   return_date: Scalars['date'];
   status: Transaction_Rental_Status_Enum;
+  /** An object relationship */
+  user: Users_User;
+  /** An object relationship */
+  userByRenterId: Users_User;
+};
+
+
+/** columns and relationships of "transaction.rental_contract" */
+export type Transaction_Rental_ContractLocation_HistoriesArgs = {
+  distinct_on?: InputMaybe<Array<Cars_Location_History_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Cars_Location_History_Order_By>>;
+  where?: InputMaybe<Cars_Location_History_Bool_Exp>;
+};
+
+
+/** columns and relationships of "transaction.rental_contract" */
+export type Transaction_Rental_ContractLocation_Histories_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Cars_Location_History_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Cars_Location_History_Order_By>>;
+  where?: InputMaybe<Cars_Location_History_Bool_Exp>;
 };
 
 /** aggregated selection of "transaction.rental_contract" */
@@ -4905,19 +5809,38 @@ export type Transaction_Rental_Contract_Aggregate_FieldsCountArgs = {
   distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
+/** order by aggregate values of table "transaction.rental_contract" */
+export type Transaction_Rental_Contract_Aggregate_Order_By = {
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Transaction_Rental_Contract_Max_Order_By>;
+  min?: InputMaybe<Transaction_Rental_Contract_Min_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "transaction.rental_contract" */
+export type Transaction_Rental_Contract_Arr_Rel_Insert_Input = {
+  data: Array<Transaction_Rental_Contract_Insert_Input>;
+  /** on conflict condition */
+  on_conflict?: InputMaybe<Transaction_Rental_Contract_On_Conflict>;
+};
+
 /** Boolean expression to filter rows from the table "transaction.rental_contract". All fields are combined with a logical 'AND'. */
 export type Transaction_Rental_Contract_Bool_Exp = {
   _and?: InputMaybe<Array<Transaction_Rental_Contract_Bool_Exp>>;
   _not?: InputMaybe<Transaction_Rental_Contract_Bool_Exp>;
   _or?: InputMaybe<Array<Transaction_Rental_Contract_Bool_Exp>>;
   approved?: InputMaybe<Boolean_Comparison_Exp>;
+  car?: InputMaybe<Cars_Car_Bool_Exp>;
   car_id?: InputMaybe<Uuid_Comparison_Exp>;
   id?: InputMaybe<Uuid_Comparison_Exp>;
   lender_id?: InputMaybe<Uuid_Comparison_Exp>;
+  location_histories?: InputMaybe<Cars_Location_History_Bool_Exp>;
   rental_date?: InputMaybe<Date_Comparison_Exp>;
+  rental_status?: InputMaybe<Transaction_Rental_Status_Bool_Exp>;
   renter_id?: InputMaybe<Uuid_Comparison_Exp>;
   return_date?: InputMaybe<Date_Comparison_Exp>;
   status?: InputMaybe<Transaction_Rental_Status_Enum_Comparison_Exp>;
+  user?: InputMaybe<Users_User_Bool_Exp>;
+  userByRenterId?: InputMaybe<Users_User_Bool_Exp>;
 };
 
 /** unique or primary key constraints on table "transaction.rental_contract" */
@@ -4929,13 +5852,18 @@ export enum Transaction_Rental_Contract_Constraint {
 /** input type for inserting data into table "transaction.rental_contract" */
 export type Transaction_Rental_Contract_Insert_Input = {
   approved?: InputMaybe<Scalars['Boolean']>;
+  car?: InputMaybe<Cars_Car_Obj_Rel_Insert_Input>;
   car_id?: InputMaybe<Scalars['uuid']>;
   id?: InputMaybe<Scalars['uuid']>;
   lender_id?: InputMaybe<Scalars['uuid']>;
+  location_histories?: InputMaybe<Cars_Location_History_Arr_Rel_Insert_Input>;
   rental_date?: InputMaybe<Scalars['date']>;
+  rental_status?: InputMaybe<Transaction_Rental_Status_Obj_Rel_Insert_Input>;
   renter_id?: InputMaybe<Scalars['uuid']>;
   return_date?: InputMaybe<Scalars['date']>;
   status?: InputMaybe<Transaction_Rental_Status_Enum>;
+  user?: InputMaybe<Users_User_Obj_Rel_Insert_Input>;
+  userByRenterId?: InputMaybe<Users_User_Obj_Rel_Insert_Input>;
 };
 
 /** aggregate max on columns */
@@ -4949,6 +5877,16 @@ export type Transaction_Rental_Contract_Max_Fields = {
   return_date?: Maybe<Scalars['date']>;
 };
 
+/** order by max() on columns of table "transaction.rental_contract" */
+export type Transaction_Rental_Contract_Max_Order_By = {
+  car_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  lender_id?: InputMaybe<Order_By>;
+  rental_date?: InputMaybe<Order_By>;
+  renter_id?: InputMaybe<Order_By>;
+  return_date?: InputMaybe<Order_By>;
+};
+
 /** aggregate min on columns */
 export type Transaction_Rental_Contract_Min_Fields = {
   __typename?: 'transaction_rental_contract_min_fields';
@@ -4960,6 +5898,16 @@ export type Transaction_Rental_Contract_Min_Fields = {
   return_date?: Maybe<Scalars['date']>;
 };
 
+/** order by min() on columns of table "transaction.rental_contract" */
+export type Transaction_Rental_Contract_Min_Order_By = {
+  car_id?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  lender_id?: InputMaybe<Order_By>;
+  rental_date?: InputMaybe<Order_By>;
+  renter_id?: InputMaybe<Order_By>;
+  return_date?: InputMaybe<Order_By>;
+};
+
 /** response of any mutation on the table "transaction.rental_contract" */
 export type Transaction_Rental_Contract_Mutation_Response = {
   __typename?: 'transaction_rental_contract_mutation_response';
@@ -4967,6 +5915,13 @@ export type Transaction_Rental_Contract_Mutation_Response = {
   affected_rows: Scalars['Int'];
   /** data from the rows affected by the mutation */
   returning: Array<Transaction_Rental_Contract>;
+};
+
+/** input type for inserting object relation for remote table "transaction.rental_contract" */
+export type Transaction_Rental_Contract_Obj_Rel_Insert_Input = {
+  data: Transaction_Rental_Contract_Insert_Input;
+  /** on conflict condition */
+  on_conflict?: InputMaybe<Transaction_Rental_Contract_On_Conflict>;
 };
 
 /** on conflict condition type for table "transaction.rental_contract" */
@@ -4979,13 +5934,18 @@ export type Transaction_Rental_Contract_On_Conflict = {
 /** Ordering options when selecting data from "transaction.rental_contract". */
 export type Transaction_Rental_Contract_Order_By = {
   approved?: InputMaybe<Order_By>;
+  car?: InputMaybe<Cars_Car_Order_By>;
   car_id?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   lender_id?: InputMaybe<Order_By>;
+  location_histories_aggregate?: InputMaybe<Cars_Location_History_Aggregate_Order_By>;
   rental_date?: InputMaybe<Order_By>;
+  rental_status?: InputMaybe<Transaction_Rental_Status_Order_By>;
   renter_id?: InputMaybe<Order_By>;
   return_date?: InputMaybe<Order_By>;
   status?: InputMaybe<Order_By>;
+  user?: InputMaybe<Users_User_Order_By>;
+  userByRenterId?: InputMaybe<Users_User_Order_By>;
 };
 
 /** primary key columns input for table: transaction_rental_contract */
@@ -5048,7 +6008,31 @@ export enum Transaction_Rental_Contract_Update_Column {
 /** columns and relationships of "transaction.rental_status" */
 export type Transaction_Rental_Status = {
   __typename?: 'transaction_rental_status';
+  /** An array relationship */
+  rental_contracts: Array<Transaction_Rental_Contract>;
+  /** An aggregate relationship */
+  rental_contracts_aggregate: Transaction_Rental_Contract_Aggregate;
   value: Scalars['String'];
+};
+
+
+/** columns and relationships of "transaction.rental_status" */
+export type Transaction_Rental_StatusRental_ContractsArgs = {
+  distinct_on?: InputMaybe<Array<Transaction_Rental_Contract_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Transaction_Rental_Contract_Order_By>>;
+  where?: InputMaybe<Transaction_Rental_Contract_Bool_Exp>;
+};
+
+
+/** columns and relationships of "transaction.rental_status" */
+export type Transaction_Rental_StatusRental_Contracts_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Transaction_Rental_Contract_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Transaction_Rental_Contract_Order_By>>;
+  where?: InputMaybe<Transaction_Rental_Contract_Bool_Exp>;
 };
 
 /** aggregated selection of "transaction.rental_status" */
@@ -5078,6 +6062,7 @@ export type Transaction_Rental_Status_Bool_Exp = {
   _and?: InputMaybe<Array<Transaction_Rental_Status_Bool_Exp>>;
   _not?: InputMaybe<Transaction_Rental_Status_Bool_Exp>;
   _or?: InputMaybe<Array<Transaction_Rental_Status_Bool_Exp>>;
+  rental_contracts?: InputMaybe<Transaction_Rental_Contract_Bool_Exp>;
   value?: InputMaybe<String_Comparison_Exp>;
 };
 
@@ -5106,6 +6091,7 @@ export type Transaction_Rental_Status_Enum_Comparison_Exp = {
 
 /** input type for inserting data into table "transaction.rental_status" */
 export type Transaction_Rental_Status_Insert_Input = {
+  rental_contracts?: InputMaybe<Transaction_Rental_Contract_Arr_Rel_Insert_Input>;
   value?: InputMaybe<Scalars['String']>;
 };
 
@@ -5130,6 +6116,13 @@ export type Transaction_Rental_Status_Mutation_Response = {
   returning: Array<Transaction_Rental_Status>;
 };
 
+/** input type for inserting object relation for remote table "transaction.rental_status" */
+export type Transaction_Rental_Status_Obj_Rel_Insert_Input = {
+  data: Transaction_Rental_Status_Insert_Input;
+  /** on conflict condition */
+  on_conflict?: InputMaybe<Transaction_Rental_Status_On_Conflict>;
+};
+
 /** on conflict condition type for table "transaction.rental_status" */
 export type Transaction_Rental_Status_On_Conflict = {
   constraint: Transaction_Rental_Status_Constraint;
@@ -5139,6 +6132,7 @@ export type Transaction_Rental_Status_On_Conflict = {
 
 /** Ordering options when selecting data from "transaction.rental_status". */
 export type Transaction_Rental_Status_Order_By = {
+  rental_contracts_aggregate?: InputMaybe<Transaction_Rental_Contract_Aggregate_Order_By>;
   value?: InputMaybe<Order_By>;
 };
 
@@ -5173,6 +6167,10 @@ export type Transaction_Transaction = {
   payment_amount: Scalars['Int'];
   payment_date: Scalars['date'];
   to: Scalars['uuid'];
+  /** An object relationship */
+  user: Users_User;
+  /** An object relationship */
+  userByTo: Users_User;
 };
 
 /** aggregated selection of "transaction.transaction" */
@@ -5205,11 +6203,39 @@ export type Transaction_Transaction_Aggregate_FieldsCountArgs = {
   distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
+/** order by aggregate values of table "transaction.transaction" */
+export type Transaction_Transaction_Aggregate_Order_By = {
+  avg?: InputMaybe<Transaction_Transaction_Avg_Order_By>;
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Transaction_Transaction_Max_Order_By>;
+  min?: InputMaybe<Transaction_Transaction_Min_Order_By>;
+  stddev?: InputMaybe<Transaction_Transaction_Stddev_Order_By>;
+  stddev_pop?: InputMaybe<Transaction_Transaction_Stddev_Pop_Order_By>;
+  stddev_samp?: InputMaybe<Transaction_Transaction_Stddev_Samp_Order_By>;
+  sum?: InputMaybe<Transaction_Transaction_Sum_Order_By>;
+  var_pop?: InputMaybe<Transaction_Transaction_Var_Pop_Order_By>;
+  var_samp?: InputMaybe<Transaction_Transaction_Var_Samp_Order_By>;
+  variance?: InputMaybe<Transaction_Transaction_Variance_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "transaction.transaction" */
+export type Transaction_Transaction_Arr_Rel_Insert_Input = {
+  data: Array<Transaction_Transaction_Insert_Input>;
+  /** on conflict condition */
+  on_conflict?: InputMaybe<Transaction_Transaction_On_Conflict>;
+};
+
 /** aggregate avg on columns */
 export type Transaction_Transaction_Avg_Fields = {
   __typename?: 'transaction_transaction_avg_fields';
   charges?: Maybe<Scalars['Float']>;
   payment_amount?: Maybe<Scalars['Float']>;
+};
+
+/** order by avg() on columns of table "transaction.transaction" */
+export type Transaction_Transaction_Avg_Order_By = {
+  charges?: InputMaybe<Order_By>;
+  payment_amount?: InputMaybe<Order_By>;
 };
 
 /** Boolean expression to filter rows from the table "transaction.transaction". All fields are combined with a logical 'AND'. */
@@ -5223,6 +6249,8 @@ export type Transaction_Transaction_Bool_Exp = {
   payment_amount?: InputMaybe<Int_Comparison_Exp>;
   payment_date?: InputMaybe<Date_Comparison_Exp>;
   to?: InputMaybe<Uuid_Comparison_Exp>;
+  user?: InputMaybe<Users_User_Bool_Exp>;
+  userByTo?: InputMaybe<Users_User_Bool_Exp>;
 };
 
 /** unique or primary key constraints on table "transaction.transaction" */
@@ -5245,6 +6273,8 @@ export type Transaction_Transaction_Insert_Input = {
   payment_amount?: InputMaybe<Scalars['Int']>;
   payment_date?: InputMaybe<Scalars['date']>;
   to?: InputMaybe<Scalars['uuid']>;
+  user?: InputMaybe<Users_User_Obj_Rel_Insert_Input>;
+  userByTo?: InputMaybe<Users_User_Obj_Rel_Insert_Input>;
 };
 
 /** aggregate max on columns */
@@ -5258,6 +6288,16 @@ export type Transaction_Transaction_Max_Fields = {
   to?: Maybe<Scalars['uuid']>;
 };
 
+/** order by max() on columns of table "transaction.transaction" */
+export type Transaction_Transaction_Max_Order_By = {
+  charges?: InputMaybe<Order_By>;
+  from?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  payment_amount?: InputMaybe<Order_By>;
+  payment_date?: InputMaybe<Order_By>;
+  to?: InputMaybe<Order_By>;
+};
+
 /** aggregate min on columns */
 export type Transaction_Transaction_Min_Fields = {
   __typename?: 'transaction_transaction_min_fields';
@@ -5267,6 +6307,16 @@ export type Transaction_Transaction_Min_Fields = {
   payment_amount?: Maybe<Scalars['Int']>;
   payment_date?: Maybe<Scalars['date']>;
   to?: Maybe<Scalars['uuid']>;
+};
+
+/** order by min() on columns of table "transaction.transaction" */
+export type Transaction_Transaction_Min_Order_By = {
+  charges?: InputMaybe<Order_By>;
+  from?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  payment_amount?: InputMaybe<Order_By>;
+  payment_date?: InputMaybe<Order_By>;
+  to?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "transaction.transaction" */
@@ -5293,6 +6343,8 @@ export type Transaction_Transaction_Order_By = {
   payment_amount?: InputMaybe<Order_By>;
   payment_date?: InputMaybe<Order_By>;
   to?: InputMaybe<Order_By>;
+  user?: InputMaybe<Users_User_Order_By>;
+  userByTo?: InputMaybe<Users_User_Order_By>;
 };
 
 /** primary key columns input for table: transaction_transaction */
@@ -5333,11 +6385,23 @@ export type Transaction_Transaction_Stddev_Fields = {
   payment_amount?: Maybe<Scalars['Float']>;
 };
 
+/** order by stddev() on columns of table "transaction.transaction" */
+export type Transaction_Transaction_Stddev_Order_By = {
+  charges?: InputMaybe<Order_By>;
+  payment_amount?: InputMaybe<Order_By>;
+};
+
 /** aggregate stddev_pop on columns */
 export type Transaction_Transaction_Stddev_Pop_Fields = {
   __typename?: 'transaction_transaction_stddev_pop_fields';
   charges?: Maybe<Scalars['Float']>;
   payment_amount?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "transaction.transaction" */
+export type Transaction_Transaction_Stddev_Pop_Order_By = {
+  charges?: InputMaybe<Order_By>;
+  payment_amount?: InputMaybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
@@ -5347,11 +6411,23 @@ export type Transaction_Transaction_Stddev_Samp_Fields = {
   payment_amount?: Maybe<Scalars['Float']>;
 };
 
+/** order by stddev_samp() on columns of table "transaction.transaction" */
+export type Transaction_Transaction_Stddev_Samp_Order_By = {
+  charges?: InputMaybe<Order_By>;
+  payment_amount?: InputMaybe<Order_By>;
+};
+
 /** aggregate sum on columns */
 export type Transaction_Transaction_Sum_Fields = {
   __typename?: 'transaction_transaction_sum_fields';
   charges?: Maybe<Scalars['numeric']>;
   payment_amount?: Maybe<Scalars['Int']>;
+};
+
+/** order by sum() on columns of table "transaction.transaction" */
+export type Transaction_Transaction_Sum_Order_By = {
+  charges?: InputMaybe<Order_By>;
+  payment_amount?: InputMaybe<Order_By>;
 };
 
 /** update columns of table "transaction.transaction" */
@@ -5377,11 +6453,23 @@ export type Transaction_Transaction_Var_Pop_Fields = {
   payment_amount?: Maybe<Scalars['Float']>;
 };
 
+/** order by var_pop() on columns of table "transaction.transaction" */
+export type Transaction_Transaction_Var_Pop_Order_By = {
+  charges?: InputMaybe<Order_By>;
+  payment_amount?: InputMaybe<Order_By>;
+};
+
 /** aggregate var_samp on columns */
 export type Transaction_Transaction_Var_Samp_Fields = {
   __typename?: 'transaction_transaction_var_samp_fields';
   charges?: Maybe<Scalars['Float']>;
   payment_amount?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_samp() on columns of table "transaction.transaction" */
+export type Transaction_Transaction_Var_Samp_Order_By = {
+  charges?: InputMaybe<Order_By>;
+  payment_amount?: InputMaybe<Order_By>;
 };
 
 /** aggregate variance on columns */
@@ -5391,11 +6479,41 @@ export type Transaction_Transaction_Variance_Fields = {
   payment_amount?: Maybe<Scalars['Float']>;
 };
 
+/** order by variance() on columns of table "transaction.transaction" */
+export type Transaction_Transaction_Variance_Order_By = {
+  charges?: InputMaybe<Order_By>;
+  payment_amount?: InputMaybe<Order_By>;
+};
+
 /** columns and relationships of "transaction.wallet" */
 export type Transaction_Wallet = {
   __typename?: 'transaction_wallet';
   amount: Scalars['numeric'];
   id: Scalars['uuid'];
+  /** An array relationship */
+  users: Array<Users_User>;
+  /** An aggregate relationship */
+  users_aggregate: Users_User_Aggregate;
+};
+
+
+/** columns and relationships of "transaction.wallet" */
+export type Transaction_WalletUsersArgs = {
+  distinct_on?: InputMaybe<Array<Users_User_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Users_User_Order_By>>;
+  where?: InputMaybe<Users_User_Bool_Exp>;
+};
+
+
+/** columns and relationships of "transaction.wallet" */
+export type Transaction_WalletUsers_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Users_User_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Users_User_Order_By>>;
+  where?: InputMaybe<Users_User_Bool_Exp>;
 };
 
 /** aggregated selection of "transaction.wallet" */
@@ -5441,6 +6559,7 @@ export type Transaction_Wallet_Bool_Exp = {
   _or?: InputMaybe<Array<Transaction_Wallet_Bool_Exp>>;
   amount?: InputMaybe<Numeric_Comparison_Exp>;
   id?: InputMaybe<Uuid_Comparison_Exp>;
+  users?: InputMaybe<Users_User_Bool_Exp>;
 };
 
 /** unique or primary key constraints on table "transaction.wallet" */
@@ -5458,6 +6577,7 @@ export type Transaction_Wallet_Inc_Input = {
 export type Transaction_Wallet_Insert_Input = {
   amount?: InputMaybe<Scalars['numeric']>;
   id?: InputMaybe<Scalars['uuid']>;
+  users?: InputMaybe<Users_User_Arr_Rel_Insert_Input>;
 };
 
 /** aggregate max on columns */
@@ -5483,6 +6603,13 @@ export type Transaction_Wallet_Mutation_Response = {
   returning: Array<Transaction_Wallet>;
 };
 
+/** input type for inserting object relation for remote table "transaction.wallet" */
+export type Transaction_Wallet_Obj_Rel_Insert_Input = {
+  data: Transaction_Wallet_Insert_Input;
+  /** on conflict condition */
+  on_conflict?: InputMaybe<Transaction_Wallet_On_Conflict>;
+};
+
 /** on conflict condition type for table "transaction.wallet" */
 export type Transaction_Wallet_On_Conflict = {
   constraint: Transaction_Wallet_Constraint;
@@ -5494,6 +6621,7 @@ export type Transaction_Wallet_On_Conflict = {
 export type Transaction_Wallet_Order_By = {
   amount?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
+  users_aggregate?: InputMaybe<Users_User_Aggregate_Order_By>;
 };
 
 /** primary key columns input for table: transaction_wallet */
@@ -5568,7 +6696,31 @@ export type Transaction_Wallet_Variance_Fields = {
 /** columns and relationships of "users.prefered_languages" */
 export type Users_Prefered_Languages = {
   __typename?: 'users_prefered_languages';
+  /** An array relationship */
+  users: Array<Users_User>;
+  /** An aggregate relationship */
+  users_aggregate: Users_User_Aggregate;
   value: Scalars['String'];
+};
+
+
+/** columns and relationships of "users.prefered_languages" */
+export type Users_Prefered_LanguagesUsersArgs = {
+  distinct_on?: InputMaybe<Array<Users_User_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Users_User_Order_By>>;
+  where?: InputMaybe<Users_User_Bool_Exp>;
+};
+
+
+/** columns and relationships of "users.prefered_languages" */
+export type Users_Prefered_LanguagesUsers_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Users_User_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Users_User_Order_By>>;
+  where?: InputMaybe<Users_User_Bool_Exp>;
 };
 
 /** aggregated selection of "users.prefered_languages" */
@@ -5598,6 +6750,7 @@ export type Users_Prefered_Languages_Bool_Exp = {
   _and?: InputMaybe<Array<Users_Prefered_Languages_Bool_Exp>>;
   _not?: InputMaybe<Users_Prefered_Languages_Bool_Exp>;
   _or?: InputMaybe<Array<Users_Prefered_Languages_Bool_Exp>>;
+  users?: InputMaybe<Users_User_Bool_Exp>;
   value?: InputMaybe<String_Comparison_Exp>;
 };
 
@@ -5623,6 +6776,7 @@ export type Users_Prefered_Languages_Enum_Comparison_Exp = {
 
 /** input type for inserting data into table "users.prefered_languages" */
 export type Users_Prefered_Languages_Insert_Input = {
+  users?: InputMaybe<Users_User_Arr_Rel_Insert_Input>;
   value?: InputMaybe<Scalars['String']>;
 };
 
@@ -5647,6 +6801,13 @@ export type Users_Prefered_Languages_Mutation_Response = {
   returning: Array<Users_Prefered_Languages>;
 };
 
+/** input type for inserting object relation for remote table "users.prefered_languages" */
+export type Users_Prefered_Languages_Obj_Rel_Insert_Input = {
+  data: Users_Prefered_Languages_Insert_Input;
+  /** on conflict condition */
+  on_conflict?: InputMaybe<Users_Prefered_Languages_On_Conflict>;
+};
+
 /** on conflict condition type for table "users.prefered_languages" */
 export type Users_Prefered_Languages_On_Conflict = {
   constraint: Users_Prefered_Languages_Constraint;
@@ -5656,6 +6817,7 @@ export type Users_Prefered_Languages_On_Conflict = {
 
 /** Ordering options when selecting data from "users.prefered_languages". */
 export type Users_Prefered_Languages_Order_By = {
+  users_aggregate?: InputMaybe<Users_User_Aggregate_Order_By>;
   value?: InputMaybe<Order_By>;
 };
 
@@ -5684,7 +6846,31 @@ export enum Users_Prefered_Languages_Update_Column {
 /** columns and relationships of "users.role_name" */
 export type Users_Role_Name = {
   __typename?: 'users_role_name';
+  /** An array relationship */
+  roles: Array<Users_Roles>;
+  /** An aggregate relationship */
+  roles_aggregate: Users_Roles_Aggregate;
   value: Scalars['String'];
+};
+
+
+/** columns and relationships of "users.role_name" */
+export type Users_Role_NameRolesArgs = {
+  distinct_on?: InputMaybe<Array<Users_Roles_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Users_Roles_Order_By>>;
+  where?: InputMaybe<Users_Roles_Bool_Exp>;
+};
+
+
+/** columns and relationships of "users.role_name" */
+export type Users_Role_NameRoles_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Users_Roles_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Users_Roles_Order_By>>;
+  where?: InputMaybe<Users_Roles_Bool_Exp>;
 };
 
 /** aggregated selection of "users.role_name" */
@@ -5714,6 +6900,7 @@ export type Users_Role_Name_Bool_Exp = {
   _and?: InputMaybe<Array<Users_Role_Name_Bool_Exp>>;
   _not?: InputMaybe<Users_Role_Name_Bool_Exp>;
   _or?: InputMaybe<Array<Users_Role_Name_Bool_Exp>>;
+  roles?: InputMaybe<Users_Roles_Bool_Exp>;
   value?: InputMaybe<String_Comparison_Exp>;
 };
 
@@ -5743,6 +6930,7 @@ export type Users_Role_Name_Enum_Comparison_Exp = {
 
 /** input type for inserting data into table "users.role_name" */
 export type Users_Role_Name_Insert_Input = {
+  roles?: InputMaybe<Users_Roles_Arr_Rel_Insert_Input>;
   value?: InputMaybe<Scalars['String']>;
 };
 
@@ -5767,6 +6955,13 @@ export type Users_Role_Name_Mutation_Response = {
   returning: Array<Users_Role_Name>;
 };
 
+/** input type for inserting object relation for remote table "users.role_name" */
+export type Users_Role_Name_Obj_Rel_Insert_Input = {
+  data: Users_Role_Name_Insert_Input;
+  /** on conflict condition */
+  on_conflict?: InputMaybe<Users_Role_Name_On_Conflict>;
+};
+
 /** on conflict condition type for table "users.role_name" */
 export type Users_Role_Name_On_Conflict = {
   constraint: Users_Role_Name_Constraint;
@@ -5776,6 +6971,7 @@ export type Users_Role_Name_On_Conflict = {
 
 /** Ordering options when selecting data from "users.role_name". */
 export type Users_Role_Name_Order_By = {
+  roles_aggregate?: InputMaybe<Users_Roles_Aggregate_Order_By>;
   value?: InputMaybe<Order_By>;
 };
 
@@ -5805,7 +7001,33 @@ export enum Users_Role_Name_Update_Column {
 export type Users_Roles = {
   __typename?: 'users_roles';
   id: Scalars['uuid'];
+  /** An object relationship */
+  role_name: Users_Role_Name;
   role_type: Users_Role_Name_Enum;
+  /** An array relationship */
+  user_roles: Array<Users_User_Roles>;
+  /** An aggregate relationship */
+  user_roles_aggregate: Users_User_Roles_Aggregate;
+};
+
+
+/** columns and relationships of "users.roles" */
+export type Users_RolesUser_RolesArgs = {
+  distinct_on?: InputMaybe<Array<Users_User_Roles_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Users_User_Roles_Order_By>>;
+  where?: InputMaybe<Users_User_Roles_Bool_Exp>;
+};
+
+
+/** columns and relationships of "users.roles" */
+export type Users_RolesUser_Roles_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Users_User_Roles_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Users_User_Roles_Order_By>>;
+  where?: InputMaybe<Users_User_Roles_Bool_Exp>;
 };
 
 /** aggregated selection of "users.roles" */
@@ -5830,13 +7052,29 @@ export type Users_Roles_Aggregate_FieldsCountArgs = {
   distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
+/** order by aggregate values of table "users.roles" */
+export type Users_Roles_Aggregate_Order_By = {
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Users_Roles_Max_Order_By>;
+  min?: InputMaybe<Users_Roles_Min_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "users.roles" */
+export type Users_Roles_Arr_Rel_Insert_Input = {
+  data: Array<Users_Roles_Insert_Input>;
+  /** on conflict condition */
+  on_conflict?: InputMaybe<Users_Roles_On_Conflict>;
+};
+
 /** Boolean expression to filter rows from the table "users.roles". All fields are combined with a logical 'AND'. */
 export type Users_Roles_Bool_Exp = {
   _and?: InputMaybe<Array<Users_Roles_Bool_Exp>>;
   _not?: InputMaybe<Users_Roles_Bool_Exp>;
   _or?: InputMaybe<Array<Users_Roles_Bool_Exp>>;
   id?: InputMaybe<Uuid_Comparison_Exp>;
+  role_name?: InputMaybe<Users_Role_Name_Bool_Exp>;
   role_type?: InputMaybe<Users_Role_Name_Enum_Comparison_Exp>;
+  user_roles?: InputMaybe<Users_User_Roles_Bool_Exp>;
 };
 
 /** unique or primary key constraints on table "users.roles" */
@@ -5848,7 +7086,9 @@ export enum Users_Roles_Constraint {
 /** input type for inserting data into table "users.roles" */
 export type Users_Roles_Insert_Input = {
   id?: InputMaybe<Scalars['uuid']>;
+  role_name?: InputMaybe<Users_Role_Name_Obj_Rel_Insert_Input>;
   role_type?: InputMaybe<Users_Role_Name_Enum>;
+  user_roles?: InputMaybe<Users_User_Roles_Arr_Rel_Insert_Input>;
 };
 
 /** aggregate max on columns */
@@ -5857,10 +7097,20 @@ export type Users_Roles_Max_Fields = {
   id?: Maybe<Scalars['uuid']>;
 };
 
+/** order by max() on columns of table "users.roles" */
+export type Users_Roles_Max_Order_By = {
+  id?: InputMaybe<Order_By>;
+};
+
 /** aggregate min on columns */
 export type Users_Roles_Min_Fields = {
   __typename?: 'users_roles_min_fields';
   id?: Maybe<Scalars['uuid']>;
+};
+
+/** order by min() on columns of table "users.roles" */
+export type Users_Roles_Min_Order_By = {
+  id?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "users.roles" */
@@ -5870,6 +7120,13 @@ export type Users_Roles_Mutation_Response = {
   affected_rows: Scalars['Int'];
   /** data from the rows affected by the mutation */
   returning: Array<Users_Roles>;
+};
+
+/** input type for inserting object relation for remote table "users.roles" */
+export type Users_Roles_Obj_Rel_Insert_Input = {
+  data: Users_Roles_Insert_Input;
+  /** on conflict condition */
+  on_conflict?: InputMaybe<Users_Roles_On_Conflict>;
 };
 
 /** on conflict condition type for table "users.roles" */
@@ -5882,7 +7139,9 @@ export type Users_Roles_On_Conflict = {
 /** Ordering options when selecting data from "users.roles". */
 export type Users_Roles_Order_By = {
   id?: InputMaybe<Order_By>;
+  role_name?: InputMaybe<Users_Role_Name_Order_By>;
   role_type?: InputMaybe<Order_By>;
+  user_roles_aggregate?: InputMaybe<Users_User_Roles_Aggregate_Order_By>;
 };
 
 /** primary key columns input for table: users_roles */
@@ -5915,15 +7174,236 @@ export enum Users_Roles_Update_Column {
 /** columns and relationships of "users.user" */
 export type Users_User = {
   __typename?: 'users_user';
+  /** An array relationship */
+  car_reviews: Array<Review_Car_Review>;
+  /** An aggregate relationship */
+  car_reviews_aggregate: Review_Car_Review_Aggregate;
+  /** An array relationship */
+  cars: Array<Cars_Car>;
+  /** An aggregate relationship */
+  cars_aggregate: Cars_Car_Aggregate;
   date_registered?: Maybe<Scalars['date']>;
   email?: Maybe<Scalars['String']>;
   id: Scalars['uuid'];
   name?: Maybe<Scalars['String']>;
   picture?: Maybe<Scalars['String']>;
+  /** An object relationship */
+  prefered_language?: Maybe<Users_Prefered_Languages>;
   preferred_language?: Maybe<Users_Prefered_Languages_Enum>;
+  profile?: Maybe<Scalars['String']>;
+  /** An array relationship */
+  rentalContractsByRenterId: Array<Transaction_Rental_Contract>;
+  /** An aggregate relationship */
+  rentalContractsByRenterId_aggregate: Transaction_Rental_Contract_Aggregate;
+  /** An array relationship */
+  rental_contracts: Array<Transaction_Rental_Contract>;
+  /** An aggregate relationship */
+  rental_contracts_aggregate: Transaction_Rental_Contract_Aggregate;
+  /** An array relationship */
+  transactions: Array<Transaction_Transaction>;
+  /** An array relationship */
+  transactionsByTo: Array<Transaction_Transaction>;
+  /** An aggregate relationship */
+  transactionsByTo_aggregate: Transaction_Transaction_Aggregate;
+  /** An aggregate relationship */
+  transactions_aggregate: Transaction_Transaction_Aggregate;
   updated_at?: Maybe<Scalars['String']>;
+  /** An array relationship */
+  userReviewsByFor: Array<Review_User_Review>;
+  /** An aggregate relationship */
+  userReviewsByFor_aggregate: Review_User_Review_Aggregate;
+  /** An array relationship */
+  user_reviews: Array<Review_User_Review>;
+  /** An aggregate relationship */
+  user_reviews_aggregate: Review_User_Review_Aggregate;
+  /** An array relationship */
+  user_roles: Array<Users_User_Roles>;
+  /** An aggregate relationship */
+  user_roles_aggregate: Users_User_Roles_Aggregate;
   username?: Maybe<Scalars['String']>;
+  /** An object relationship */
+  wallet?: Maybe<Transaction_Wallet>;
   wallet_id?: Maybe<Scalars['uuid']>;
+};
+
+
+/** columns and relationships of "users.user" */
+export type Users_UserCar_ReviewsArgs = {
+  distinct_on?: InputMaybe<Array<Review_Car_Review_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Review_Car_Review_Order_By>>;
+  where?: InputMaybe<Review_Car_Review_Bool_Exp>;
+};
+
+
+/** columns and relationships of "users.user" */
+export type Users_UserCar_Reviews_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Review_Car_Review_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Review_Car_Review_Order_By>>;
+  where?: InputMaybe<Review_Car_Review_Bool_Exp>;
+};
+
+
+/** columns and relationships of "users.user" */
+export type Users_UserCarsArgs = {
+  distinct_on?: InputMaybe<Array<Cars_Car_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Cars_Car_Order_By>>;
+  where?: InputMaybe<Cars_Car_Bool_Exp>;
+};
+
+
+/** columns and relationships of "users.user" */
+export type Users_UserCars_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Cars_Car_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Cars_Car_Order_By>>;
+  where?: InputMaybe<Cars_Car_Bool_Exp>;
+};
+
+
+/** columns and relationships of "users.user" */
+export type Users_UserRentalContractsByRenterIdArgs = {
+  distinct_on?: InputMaybe<Array<Transaction_Rental_Contract_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Transaction_Rental_Contract_Order_By>>;
+  where?: InputMaybe<Transaction_Rental_Contract_Bool_Exp>;
+};
+
+
+/** columns and relationships of "users.user" */
+export type Users_UserRentalContractsByRenterId_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Transaction_Rental_Contract_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Transaction_Rental_Contract_Order_By>>;
+  where?: InputMaybe<Transaction_Rental_Contract_Bool_Exp>;
+};
+
+
+/** columns and relationships of "users.user" */
+export type Users_UserRental_ContractsArgs = {
+  distinct_on?: InputMaybe<Array<Transaction_Rental_Contract_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Transaction_Rental_Contract_Order_By>>;
+  where?: InputMaybe<Transaction_Rental_Contract_Bool_Exp>;
+};
+
+
+/** columns and relationships of "users.user" */
+export type Users_UserRental_Contracts_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Transaction_Rental_Contract_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Transaction_Rental_Contract_Order_By>>;
+  where?: InputMaybe<Transaction_Rental_Contract_Bool_Exp>;
+};
+
+
+/** columns and relationships of "users.user" */
+export type Users_UserTransactionsArgs = {
+  distinct_on?: InputMaybe<Array<Transaction_Transaction_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Transaction_Transaction_Order_By>>;
+  where?: InputMaybe<Transaction_Transaction_Bool_Exp>;
+};
+
+
+/** columns and relationships of "users.user" */
+export type Users_UserTransactionsByToArgs = {
+  distinct_on?: InputMaybe<Array<Transaction_Transaction_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Transaction_Transaction_Order_By>>;
+  where?: InputMaybe<Transaction_Transaction_Bool_Exp>;
+};
+
+
+/** columns and relationships of "users.user" */
+export type Users_UserTransactionsByTo_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Transaction_Transaction_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Transaction_Transaction_Order_By>>;
+  where?: InputMaybe<Transaction_Transaction_Bool_Exp>;
+};
+
+
+/** columns and relationships of "users.user" */
+export type Users_UserTransactions_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Transaction_Transaction_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Transaction_Transaction_Order_By>>;
+  where?: InputMaybe<Transaction_Transaction_Bool_Exp>;
+};
+
+
+/** columns and relationships of "users.user" */
+export type Users_UserUserReviewsByForArgs = {
+  distinct_on?: InputMaybe<Array<Review_User_Review_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Review_User_Review_Order_By>>;
+  where?: InputMaybe<Review_User_Review_Bool_Exp>;
+};
+
+
+/** columns and relationships of "users.user" */
+export type Users_UserUserReviewsByFor_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Review_User_Review_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Review_User_Review_Order_By>>;
+  where?: InputMaybe<Review_User_Review_Bool_Exp>;
+};
+
+
+/** columns and relationships of "users.user" */
+export type Users_UserUser_ReviewsArgs = {
+  distinct_on?: InputMaybe<Array<Review_User_Review_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Review_User_Review_Order_By>>;
+  where?: InputMaybe<Review_User_Review_Bool_Exp>;
+};
+
+
+/** columns and relationships of "users.user" */
+export type Users_UserUser_Reviews_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Review_User_Review_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Review_User_Review_Order_By>>;
+  where?: InputMaybe<Review_User_Review_Bool_Exp>;
+};
+
+
+/** columns and relationships of "users.user" */
+export type Users_UserUser_RolesArgs = {
+  distinct_on?: InputMaybe<Array<Users_User_Roles_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Users_User_Roles_Order_By>>;
+  where?: InputMaybe<Users_User_Roles_Bool_Exp>;
+};
+
+
+/** columns and relationships of "users.user" */
+export type Users_UserUser_Roles_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Users_User_Roles_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Users_User_Roles_Order_By>>;
+  where?: InputMaybe<Users_User_Roles_Bool_Exp>;
 };
 
 /** aggregated selection of "users.user" */
@@ -5948,19 +7428,45 @@ export type Users_User_Aggregate_FieldsCountArgs = {
   distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
+/** order by aggregate values of table "users.user" */
+export type Users_User_Aggregate_Order_By = {
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Users_User_Max_Order_By>;
+  min?: InputMaybe<Users_User_Min_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "users.user" */
+export type Users_User_Arr_Rel_Insert_Input = {
+  data: Array<Users_User_Insert_Input>;
+  /** on conflict condition */
+  on_conflict?: InputMaybe<Users_User_On_Conflict>;
+};
+
 /** Boolean expression to filter rows from the table "users.user". All fields are combined with a logical 'AND'. */
 export type Users_User_Bool_Exp = {
   _and?: InputMaybe<Array<Users_User_Bool_Exp>>;
   _not?: InputMaybe<Users_User_Bool_Exp>;
   _or?: InputMaybe<Array<Users_User_Bool_Exp>>;
+  car_reviews?: InputMaybe<Review_Car_Review_Bool_Exp>;
+  cars?: InputMaybe<Cars_Car_Bool_Exp>;
   date_registered?: InputMaybe<Date_Comparison_Exp>;
   email?: InputMaybe<String_Comparison_Exp>;
   id?: InputMaybe<Uuid_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
   picture?: InputMaybe<String_Comparison_Exp>;
+  prefered_language?: InputMaybe<Users_Prefered_Languages_Bool_Exp>;
   preferred_language?: InputMaybe<Users_Prefered_Languages_Enum_Comparison_Exp>;
+  profile?: InputMaybe<String_Comparison_Exp>;
+  rentalContractsByRenterId?: InputMaybe<Transaction_Rental_Contract_Bool_Exp>;
+  rental_contracts?: InputMaybe<Transaction_Rental_Contract_Bool_Exp>;
+  transactions?: InputMaybe<Transaction_Transaction_Bool_Exp>;
+  transactionsByTo?: InputMaybe<Transaction_Transaction_Bool_Exp>;
   updated_at?: InputMaybe<String_Comparison_Exp>;
+  userReviewsByFor?: InputMaybe<Review_User_Review_Bool_Exp>;
+  user_reviews?: InputMaybe<Review_User_Review_Bool_Exp>;
+  user_roles?: InputMaybe<Users_User_Roles_Bool_Exp>;
   username?: InputMaybe<String_Comparison_Exp>;
+  wallet?: InputMaybe<Transaction_Wallet_Bool_Exp>;
   wallet_id?: InputMaybe<Uuid_Comparison_Exp>;
 };
 
@@ -5974,14 +7480,26 @@ export enum Users_User_Constraint {
 
 /** input type for inserting data into table "users.user" */
 export type Users_User_Insert_Input = {
+  car_reviews?: InputMaybe<Review_Car_Review_Arr_Rel_Insert_Input>;
+  cars?: InputMaybe<Cars_Car_Arr_Rel_Insert_Input>;
   date_registered?: InputMaybe<Scalars['date']>;
   email?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['uuid']>;
   name?: InputMaybe<Scalars['String']>;
   picture?: InputMaybe<Scalars['String']>;
+  prefered_language?: InputMaybe<Users_Prefered_Languages_Obj_Rel_Insert_Input>;
   preferred_language?: InputMaybe<Users_Prefered_Languages_Enum>;
+  profile?: InputMaybe<Scalars['String']>;
+  rentalContractsByRenterId?: InputMaybe<Transaction_Rental_Contract_Arr_Rel_Insert_Input>;
+  rental_contracts?: InputMaybe<Transaction_Rental_Contract_Arr_Rel_Insert_Input>;
+  transactions?: InputMaybe<Transaction_Transaction_Arr_Rel_Insert_Input>;
+  transactionsByTo?: InputMaybe<Transaction_Transaction_Arr_Rel_Insert_Input>;
   updated_at?: InputMaybe<Scalars['String']>;
+  userReviewsByFor?: InputMaybe<Review_User_Review_Arr_Rel_Insert_Input>;
+  user_reviews?: InputMaybe<Review_User_Review_Arr_Rel_Insert_Input>;
+  user_roles?: InputMaybe<Users_User_Roles_Arr_Rel_Insert_Input>;
   username?: InputMaybe<Scalars['String']>;
+  wallet?: InputMaybe<Transaction_Wallet_Obj_Rel_Insert_Input>;
   wallet_id?: InputMaybe<Scalars['uuid']>;
 };
 
@@ -5993,9 +7511,23 @@ export type Users_User_Max_Fields = {
   id?: Maybe<Scalars['uuid']>;
   name?: Maybe<Scalars['String']>;
   picture?: Maybe<Scalars['String']>;
+  profile?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['String']>;
   username?: Maybe<Scalars['String']>;
   wallet_id?: Maybe<Scalars['uuid']>;
+};
+
+/** order by max() on columns of table "users.user" */
+export type Users_User_Max_Order_By = {
+  date_registered?: InputMaybe<Order_By>;
+  email?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  picture?: InputMaybe<Order_By>;
+  profile?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  username?: InputMaybe<Order_By>;
+  wallet_id?: InputMaybe<Order_By>;
 };
 
 /** aggregate min on columns */
@@ -6006,9 +7538,23 @@ export type Users_User_Min_Fields = {
   id?: Maybe<Scalars['uuid']>;
   name?: Maybe<Scalars['String']>;
   picture?: Maybe<Scalars['String']>;
+  profile?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['String']>;
   username?: Maybe<Scalars['String']>;
   wallet_id?: Maybe<Scalars['uuid']>;
+};
+
+/** order by min() on columns of table "users.user" */
+export type Users_User_Min_Order_By = {
+  date_registered?: InputMaybe<Order_By>;
+  email?: InputMaybe<Order_By>;
+  id?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  picture?: InputMaybe<Order_By>;
+  profile?: InputMaybe<Order_By>;
+  updated_at?: InputMaybe<Order_By>;
+  username?: InputMaybe<Order_By>;
+  wallet_id?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "users.user" */
@@ -6020,6 +7566,13 @@ export type Users_User_Mutation_Response = {
   returning: Array<Users_User>;
 };
 
+/** input type for inserting object relation for remote table "users.user" */
+export type Users_User_Obj_Rel_Insert_Input = {
+  data: Users_User_Insert_Input;
+  /** on conflict condition */
+  on_conflict?: InputMaybe<Users_User_On_Conflict>;
+};
+
 /** on conflict condition type for table "users.user" */
 export type Users_User_On_Conflict = {
   constraint: Users_User_Constraint;
@@ -6029,14 +7582,26 @@ export type Users_User_On_Conflict = {
 
 /** Ordering options when selecting data from "users.user". */
 export type Users_User_Order_By = {
+  car_reviews_aggregate?: InputMaybe<Review_Car_Review_Aggregate_Order_By>;
+  cars_aggregate?: InputMaybe<Cars_Car_Aggregate_Order_By>;
   date_registered?: InputMaybe<Order_By>;
   email?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
   picture?: InputMaybe<Order_By>;
+  prefered_language?: InputMaybe<Users_Prefered_Languages_Order_By>;
   preferred_language?: InputMaybe<Order_By>;
+  profile?: InputMaybe<Order_By>;
+  rentalContractsByRenterId_aggregate?: InputMaybe<Transaction_Rental_Contract_Aggregate_Order_By>;
+  rental_contracts_aggregate?: InputMaybe<Transaction_Rental_Contract_Aggregate_Order_By>;
+  transactionsByTo_aggregate?: InputMaybe<Transaction_Transaction_Aggregate_Order_By>;
+  transactions_aggregate?: InputMaybe<Transaction_Transaction_Aggregate_Order_By>;
   updated_at?: InputMaybe<Order_By>;
+  userReviewsByFor_aggregate?: InputMaybe<Review_User_Review_Aggregate_Order_By>;
+  user_reviews_aggregate?: InputMaybe<Review_User_Review_Aggregate_Order_By>;
+  user_roles_aggregate?: InputMaybe<Users_User_Roles_Aggregate_Order_By>;
   username?: InputMaybe<Order_By>;
+  wallet?: InputMaybe<Transaction_Wallet_Order_By>;
   wallet_id?: InputMaybe<Order_By>;
 };
 
@@ -6049,7 +7614,11 @@ export type Users_User_Pk_Columns_Input = {
 export type Users_User_Roles = {
   __typename?: 'users_user_roles';
   id: Scalars['uuid'];
+  /** An object relationship */
+  role: Users_Roles;
   role_id: Scalars['uuid'];
+  /** An object relationship */
+  user: Users_User;
   user_id: Scalars['uuid'];
 };
 
@@ -6075,13 +7644,29 @@ export type Users_User_Roles_Aggregate_FieldsCountArgs = {
   distinct?: InputMaybe<Scalars['Boolean']>;
 };
 
+/** order by aggregate values of table "users.user_roles" */
+export type Users_User_Roles_Aggregate_Order_By = {
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Users_User_Roles_Max_Order_By>;
+  min?: InputMaybe<Users_User_Roles_Min_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "users.user_roles" */
+export type Users_User_Roles_Arr_Rel_Insert_Input = {
+  data: Array<Users_User_Roles_Insert_Input>;
+  /** on conflict condition */
+  on_conflict?: InputMaybe<Users_User_Roles_On_Conflict>;
+};
+
 /** Boolean expression to filter rows from the table "users.user_roles". All fields are combined with a logical 'AND'. */
 export type Users_User_Roles_Bool_Exp = {
   _and?: InputMaybe<Array<Users_User_Roles_Bool_Exp>>;
   _not?: InputMaybe<Users_User_Roles_Bool_Exp>;
   _or?: InputMaybe<Array<Users_User_Roles_Bool_Exp>>;
   id?: InputMaybe<Uuid_Comparison_Exp>;
+  role?: InputMaybe<Users_Roles_Bool_Exp>;
   role_id?: InputMaybe<Uuid_Comparison_Exp>;
+  user?: InputMaybe<Users_User_Bool_Exp>;
   user_id?: InputMaybe<Uuid_Comparison_Exp>;
 };
 
@@ -6094,7 +7679,9 @@ export enum Users_User_Roles_Constraint {
 /** input type for inserting data into table "users.user_roles" */
 export type Users_User_Roles_Insert_Input = {
   id?: InputMaybe<Scalars['uuid']>;
+  role?: InputMaybe<Users_Roles_Obj_Rel_Insert_Input>;
   role_id?: InputMaybe<Scalars['uuid']>;
+  user?: InputMaybe<Users_User_Obj_Rel_Insert_Input>;
   user_id?: InputMaybe<Scalars['uuid']>;
 };
 
@@ -6106,12 +7693,26 @@ export type Users_User_Roles_Max_Fields = {
   user_id?: Maybe<Scalars['uuid']>;
 };
 
+/** order by max() on columns of table "users.user_roles" */
+export type Users_User_Roles_Max_Order_By = {
+  id?: InputMaybe<Order_By>;
+  role_id?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
+};
+
 /** aggregate min on columns */
 export type Users_User_Roles_Min_Fields = {
   __typename?: 'users_user_roles_min_fields';
   id?: Maybe<Scalars['uuid']>;
   role_id?: Maybe<Scalars['uuid']>;
   user_id?: Maybe<Scalars['uuid']>;
+};
+
+/** order by min() on columns of table "users.user_roles" */
+export type Users_User_Roles_Min_Order_By = {
+  id?: InputMaybe<Order_By>;
+  role_id?: InputMaybe<Order_By>;
+  user_id?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "users.user_roles" */
@@ -6133,7 +7734,9 @@ export type Users_User_Roles_On_Conflict = {
 /** Ordering options when selecting data from "users.user_roles". */
 export type Users_User_Roles_Order_By = {
   id?: InputMaybe<Order_By>;
+  role?: InputMaybe<Users_Roles_Order_By>;
   role_id?: InputMaybe<Order_By>;
+  user?: InputMaybe<Users_User_Order_By>;
   user_id?: InputMaybe<Order_By>;
 };
 
@@ -6184,6 +7787,8 @@ export enum Users_User_Select_Column {
   /** column name */
   PreferredLanguage = 'preferred_language',
   /** column name */
+  Profile = 'profile',
+  /** column name */
   UpdatedAt = 'updated_at',
   /** column name */
   Username = 'username',
@@ -6199,6 +7804,7 @@ export type Users_User_Set_Input = {
   name?: InputMaybe<Scalars['String']>;
   picture?: InputMaybe<Scalars['String']>;
   preferred_language?: InputMaybe<Users_Prefered_Languages_Enum>;
+  profile?: InputMaybe<Scalars['String']>;
   updated_at?: InputMaybe<Scalars['String']>;
   username?: InputMaybe<Scalars['String']>;
   wallet_id?: InputMaybe<Scalars['uuid']>;
@@ -6218,6 +7824,8 @@ export enum Users_User_Update_Column {
   Picture = 'picture',
   /** column name */
   PreferredLanguage = 'preferred_language',
+  /** column name */
+  Profile = 'profile',
   /** column name */
   UpdatedAt = 'updated_at',
   /** column name */
@@ -6248,6 +7856,18 @@ export type MyQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type MyQueryQuery = { __typename?: 'query_root', users_user: Array<{ __typename?: 'users_user', id: any, date_registered?: any | null | undefined, email?: string | null | undefined, name?: string | null | undefined, picture?: string | null | undefined, preferred_language?: Users_Prefered_Languages_Enum | null | undefined, updated_at?: string | null | undefined, username?: string | null | undefined, wallet_id?: any | null | undefined }> };
+
+export type GetAllCarsByUuidQueryVariables = Exact<{
+  _eq?: InputMaybe<Scalars['uuid']>;
+}>;
+
+
+export type GetAllCarsByUuidQuery = { __typename?: 'query_root', cars_car: Array<{ __typename?: 'cars_car', body_type: Cars_Body_Type_Enum, capacity: number, car_brand: Cars_Car_Brand_Type_Enum, color: string, description: string, fuel_type: Cars_Fuel_Type_Enum, id: any, is_approval_required: boolean, lender_id: any, plate_number: string, rate: any, status: Cars_Car_Status_Enum, car_reviews: Array<{ __typename?: 'review_car_review', car_id: any, id: any, review_id: any, reviewer_id: any, review: { __typename?: 'review_review', date: any, description: string, id: any, score: any, title: string } }>, location: { __typename?: 'cars_location', long: any, lat: any, city: string, country: string, state: string, id: any } }> };
+
+export type GetAllAvailableCarsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetAllAvailableCarsQuery = { __typename?: 'query_root', cars_car: Array<{ __typename?: 'cars_car', body_type: Cars_Body_Type_Enum, capacity: number, car_brand: Cars_Car_Brand_Type_Enum, color: string, description: string, fuel_type: Cars_Fuel_Type_Enum, id: any, is_approval_required: boolean, lender_id: any, plate_number: string, rate: any, status: Cars_Car_Status_Enum, car_reviews: Array<{ __typename?: 'review_car_review', car_id: any, id: any, review_id: any, reviewer_id: any, review: { __typename?: 'review_review', date: any, description: string, id: any, score: any, title: string } }>, location: { __typename?: 'cars_location', long: any, lat: any, city: string, country: string, state: string, id: any } }> };
 
 
 export const GetUsersDocument = gql`
@@ -6326,3 +7946,139 @@ export function useMyQueryLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<My
 export type MyQueryQueryHookResult = ReturnType<typeof useMyQueryQuery>;
 export type MyQueryLazyQueryHookResult = ReturnType<typeof useMyQueryLazyQuery>;
 export type MyQueryQueryResult = Apollo.QueryResult<MyQueryQuery, MyQueryQueryVariables>;
+export const GetAllCarsByUuidDocument = gql`
+    query GetAllCarsByUUID($_eq: uuid = "") {
+  cars_car(where: {lender_id: {_eq: $_eq}}) {
+    body_type
+    capacity
+    car_brand
+    car_reviews {
+      car_id
+      id
+      review_id
+      reviewer_id
+      review {
+        date
+        description
+        id
+        score
+        title
+      }
+    }
+    color
+    description
+    fuel_type
+    id
+    is_approval_required
+    lender_id
+    plate_number
+    rate
+    status
+    location {
+      long
+      lat
+      city
+      country
+      state
+      id
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetAllCarsByUuidQuery__
+ *
+ * To run a query within a React component, call `useGetAllCarsByUuidQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAllCarsByUuidQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetAllCarsByUuidQuery({
+ *   variables: {
+ *      _eq: // value for '_eq'
+ *   },
+ * });
+ */
+export function useGetAllCarsByUuidQuery(baseOptions?: Apollo.QueryHookOptions<GetAllCarsByUuidQuery, GetAllCarsByUuidQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetAllCarsByUuidQuery, GetAllCarsByUuidQueryVariables>(GetAllCarsByUuidDocument, options);
+      }
+export function useGetAllCarsByUuidLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAllCarsByUuidQuery, GetAllCarsByUuidQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetAllCarsByUuidQuery, GetAllCarsByUuidQueryVariables>(GetAllCarsByUuidDocument, options);
+        }
+export type GetAllCarsByUuidQueryHookResult = ReturnType<typeof useGetAllCarsByUuidQuery>;
+export type GetAllCarsByUuidLazyQueryHookResult = ReturnType<typeof useGetAllCarsByUuidLazyQuery>;
+export type GetAllCarsByUuidQueryResult = Apollo.QueryResult<GetAllCarsByUuidQuery, GetAllCarsByUuidQueryVariables>;
+export const GetAllAvailableCarsDocument = gql`
+    query GetAllAvailableCars {
+  cars_car(
+    where: {status: {_eq: AVAILABLE}}
+    order_by: {car_reviews_aggregate: {count: asc}}
+  ) {
+    body_type
+    capacity
+    car_brand
+    car_reviews {
+      car_id
+      id
+      review_id
+      reviewer_id
+      review {
+        date
+        description
+        id
+        score
+        title
+      }
+    }
+    color
+    description
+    fuel_type
+    id
+    is_approval_required
+    lender_id
+    plate_number
+    rate
+    status
+    location {
+      long
+      lat
+      city
+      country
+      state
+      id
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetAllAvailableCarsQuery__
+ *
+ * To run a query within a React component, call `useGetAllAvailableCarsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAllAvailableCarsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetAllAvailableCarsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetAllAvailableCarsQuery(baseOptions?: Apollo.QueryHookOptions<GetAllAvailableCarsQuery, GetAllAvailableCarsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetAllAvailableCarsQuery, GetAllAvailableCarsQueryVariables>(GetAllAvailableCarsDocument, options);
+      }
+export function useGetAllAvailableCarsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAllAvailableCarsQuery, GetAllAvailableCarsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetAllAvailableCarsQuery, GetAllAvailableCarsQueryVariables>(GetAllAvailableCarsDocument, options);
+        }
+export type GetAllAvailableCarsQueryHookResult = ReturnType<typeof useGetAllAvailableCarsQuery>;
+export type GetAllAvailableCarsLazyQueryHookResult = ReturnType<typeof useGetAllAvailableCarsLazyQuery>;
+export type GetAllAvailableCarsQueryResult = Apollo.QueryResult<GetAllAvailableCarsQuery, GetAllAvailableCarsQueryVariables>;
