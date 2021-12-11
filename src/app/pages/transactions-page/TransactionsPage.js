@@ -31,11 +31,13 @@ const TransactionsPage = () => {
                     <Stack>
                         <Box style={{marginBottom:5}}display="flex" textAlign="center" alignItems="center">
                             <TextField id="outlined-basic" label="Deposit Amount" variant="outlined" />
-                            <Button style={{margin:10}} color="primary" variant="contained">Deposit</Button>
+                            <Button 
+                            style={{margin:10}} class="primary-btn" variant="contained">Deposit</Button>
                         </Box>
                         <Box  display="flex" textAlign="center" alignItems="center">
                             <TextField id="outlined-basic" label="Withdraw Amount" variant="outlined" />
-                            <Button style={{margin:10}} color="primary" variant="contained">Withdraw</Button>
+                            <Button style={{margin:10}} class="primary-btn"
+                            variant="contained">Withdraw</Button>
                         </Box>
 
                     </Stack>
