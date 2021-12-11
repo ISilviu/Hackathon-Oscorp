@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const ImageContainer= styled.div`
+  /* Center vertically */
     width: 300px;
     position: relative;
 `

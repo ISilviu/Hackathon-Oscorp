@@ -7,6 +7,8 @@ import Content from './app/components/Content';
 import { client } from "./ApolloClient/client";
 import { ApolloProvider } from "@apollo/client";
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>

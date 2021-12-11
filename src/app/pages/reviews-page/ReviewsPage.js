@@ -9,8 +9,8 @@ import { Button } from "@mui/material";
 
 const ReviewsPage = () => {
     return (
-        <RevPageCont className="justify-content-end">
-            <Head className="text-danger">Review this Car</Head>
+        <RevPageCont>
+            <Head >Review this Car</Head>
 
             <ImageContainer>
                 {/* <Button style={{position: 'absolute', top: '50%', left: '-10px'}}>
