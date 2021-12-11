@@ -90,7 +90,7 @@ const RentCarPage = ({ }) => {
             console.log(location)
             return (
                 <StyledCardContainer>
-                    <CarCard
+                    {/* <CarCard
                         carBrand={car_brand}
                         description={description}
                         fuelType={fuel_type}
@@ -104,7 +104,7 @@ const RentCarPage = ({ }) => {
                         onReserveClick={onReserveClick}
                         onInfoClick={onInfoClick}
                         onMarkerClick={onMarkerClick}
-                    />
+                    /> */}
                 </StyledCardContainer>
             )
         })
