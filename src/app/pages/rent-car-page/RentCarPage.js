@@ -71,6 +71,17 @@ const TEST_DATA = [
 const RentCarPage = ({ }) => {
     const [cars, setCars] = useState(TEST_DATA)
     const [carPosition, setCarPosition] = useState(null)
+    const [markerDescription, setMarkerDescription] = useState(null)
+
+
+    const { data, loading, error } = ql.useGetAllAvailableCarsQuery({
+        variables: {
+        },
+    });
+
+    if (!cars && data) {
+        setCars(data?.cars_car)
+    }
 
     const onReserveClick = () => {
 
@@ -81,7 +92,10 @@ const RentCarPage = ({ }) => {
     }
 
     const onMarkerClick = (marker) => {
-        if (marker) setCarPosition([marker?.lat, marker?.long])
+        if (marker) {
+            setCarPosition([marker.lat, marker.long])
+            setMarkerDescription(`${marker.city}, ${marker.country}`)
+        }
     }
 
     const renderCarCards = () => {
@@ -90,7 +104,7 @@ const RentCarPage = ({ }) => {
             console.log(location)
             return (
                 <StyledCardContainer>
-                    {/* <CarCard
+                    <CarCard
                         carBrand={car_brand}
                         description={description}
                         fuelType={fuel_type}
@@ -104,7 +118,7 @@ const RentCarPage = ({ }) => {
                         onReserveClick={onReserveClick}
                         onInfoClick={onInfoClick}
                         onMarkerClick={onMarkerClick}
-                    /> */}
+                    />
                 </StyledCardContainer>
             )
         })
@@ -129,7 +143,7 @@ const RentCarPage = ({ }) => {
                         >
                             {carPosition && <Marker position={carPosition}>
                                 <Popup>
-                                    A pretty CSS3 popup. <br /> Easily customizable.
+                                    {markerDescription}
                                 </Popup>
                             </Marker>}
                         </CarMap>
