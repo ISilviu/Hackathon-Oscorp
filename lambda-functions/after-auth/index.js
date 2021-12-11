@@ -17,12 +17,11 @@ exports.handler = (event, context, callback) => {
                 insert_users_user(objects: {id: "${userId}", username: "${username}", name: "${userName}", email: "${userEmail}", picture: "${userPicture}"}) {
                 returning {
                     id
-                }
+                }}
                 insert_users_user_roles(objects: {role_id: "${userRoleId}", user_id: "${userId}"}) {
                 returning {
                     id
-                }
-            }
+                }}
         }`;
 
     const graphqlReq = { "query": upsertUserQuery };
