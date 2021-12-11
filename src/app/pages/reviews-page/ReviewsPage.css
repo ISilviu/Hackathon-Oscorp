@@ -1,0 +1,51 @@
+.ImageContainer {
+  position: relative;
+  width: 100%;
+}
+
+.Head {
+  margin-top: 50px;
+  margin-bottom: 20px;
+  padding-left: 10px;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.RevPageCont {
+  background-color: whitesmoke;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+.Content {
+  display: grid;
+  grid-template-columns: 40% 60%;
+}
+
+.Contribution {
+  padding-left: 80px;
+  padding-right: 120px;
+}
+
+.RevNote {
+  width: 100%;
+}
+
+.Submit {
+  margin-top: 30px !important;
+  margin-right: 10px !important;
+  float: right;
+}
+
+.Aligner {
+  padding: 30px;
+  padding-top: 70px;
+}
+
+.Background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+}

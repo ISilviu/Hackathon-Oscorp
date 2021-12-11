@@ -71,7 +71,7 @@ export default function App({ }) {
           </Stack>
         </Stack> */}
 
-        {/* <Footer/> */}
+        <Footer/>
 
     </ThemeProvider>
   );

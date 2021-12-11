@@ -19,8 +19,10 @@ const Header = () => {
         <Toolbar>
           <Stack direction="row" flex={1} spacing={3}>
 
-            <img src="images/logo.png" 
-                className="logo"></img>
+            <Link to="/" underline="none" style={{ textDecoration: 'none', color: 'inherit'}}>
+              <img src="images/logo.png" 
+                  className="logo"></img>
+            </Link>
 
             <Link to="/account" underline="none" style={{ textDecoration: 'none', color: 'inherit'}}>
                 <Button variant="outlined" className="primary-olbtn">Features</Button>
