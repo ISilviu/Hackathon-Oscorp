@@ -4,6 +4,7 @@ import Users from '../../components/users/User';
 import RentCarPage from '../pages/rent-car-page/RentCarPage';
 import ReviewsPage from '../pages/reviews-page/ReviewsPage';
 import AccountPage from "../pages/account-page/AccountPage";
+import CarsList from './cars-list/CarsList';
 
 export default function Content() {
     return (
@@ -14,6 +15,7 @@ export default function Content() {
             <Route path="/users" element={<Users />} />
             <Route path="/reviews" element={<ReviewsPage/>}/>
             <Route path="/account" element={<AccountPage/>}/>
+            <Route path="/test" element={<CarsList/>}/>
         </Routes>
     );
 }
