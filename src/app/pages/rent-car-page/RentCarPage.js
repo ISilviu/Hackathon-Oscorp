@@ -26,15 +26,6 @@ const RentCarPage = ({ }) => {
         setCars(data?.cars_car)
     }
 
-    const { data, loading, error } = ql.useGetAllAvailableCarsQuery({
-        variables: {
-        },
-    });
-
-    if (!cars && data) {
-        setCars(data?.cars_car)
-    }
-
     console.log('DATA:', data)
     const onReserveClick = () => {
 
