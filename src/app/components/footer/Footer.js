@@ -12,7 +12,7 @@ const Footer = () => {
             Cristi,
             Lorand,
             Pusky,
-            Szilviu
+            Silviu
         </div>
       </div>
     )
