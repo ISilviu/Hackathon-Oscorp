@@ -26,7 +26,7 @@ const ReviewsPage = () => {
                         </Button> */}
                         <img src="images/placeholder.jpg"
                             alt="car being reviewed"
-                            style={{ width: '100%', height: '100%' }}
+                            style={{ width: '100%', height: '100%', maxWidth: "100vh" }}
                         />
                         <ReviewStars absolute={true} score={2.65} />
                         {/* <Button>
