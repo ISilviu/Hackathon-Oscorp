@@ -1,0 +1,18 @@
+.AccPage {
+  padding-top: 65px;
+}
+
+.Content {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.userSettings {
+  justify-content: center;
+  display: flex;
+}
+
+.AddCar {
+  overflow: hidden;
+  height: 100%;
+}

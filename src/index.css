@@ -37,3 +37,8 @@ code {
 
   border-radius: 10px !important;
 }
+
+.hidden {
+  opacity: 0;
+  position: absolute !important;
+}
