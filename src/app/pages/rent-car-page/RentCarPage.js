@@ -8,6 +8,7 @@ import { useMemo, useState } from 'react';
 import { Marker, Popup } from 'react-leaflet';
 import CarCard from '../../components/car-card/CarCard.js'
 import * as ql from '../../../generated/graphql'
+import React from 'react';
 
 const DEFAULT_IMAGE = 'https://carwow-uk-wp-3.imgix.net/Volvo-XC40-white-scaled.jpg'
 
@@ -28,7 +29,6 @@ const RentCarPage = ({ }) => {
 
     console.log('DATA:', data)
     const onReserveClick = () => {
-
     }
 
     const onInfoClick = () => {
@@ -58,6 +58,7 @@ const RentCarPage = ({ }) => {
                         rate={rate}
                         image={images?.length ? images[0] : DEFAULT_IMAGE}
                         location={location}
+
 
                         onReserveClick={onReserveClick}
                         onInfoClick={onInfoClick}

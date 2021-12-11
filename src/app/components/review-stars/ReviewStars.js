@@ -6,8 +6,8 @@ import { RevStars } from "./ReviewStars.styles";
 const ReviewStars = ({score = 0, absolute = false}) => {
     const stars = [];
 
-    const validColor = 'rgb(255,0,0)';
-    const invalidColor = 'grey';
+    const validColor = 'rgb(254,192,15)';
+    const invalidColor = 'black';
 
     let halved = false;
     for (let i = 1; i <= 5; i++) {
