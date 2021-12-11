@@ -86,7 +86,6 @@ export default function App({ }) {
           <Button color="primary" variant="contained">Users</Button>
         </Link>
       </Stack>
-      <ReviewsPage />
     </Stack>
   );
 }
