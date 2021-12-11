@@ -1,2 +1,2 @@
-export const LOGIN_URL = "https://rent-my-car-pool.auth.us-east-2.amazoncognito.com/login?client_id=6sh01k6vqvqs4katnqi6acugf8&response_type=token&scope=email+openid+phone&redirect_uri=http://localhost:3000/rent-car";
-export const REGISTER_URL = "https://rent-my-car-pool.auth.us-east-2.amazoncognito.com/signup?client_id=6sh01k6vqvqs4katnqi6acugf8&response_type=token&scope=email+openid+phone&redirect_uri=http://localhost:3000/rent-car";
+export const LOGIN_URL = "https://rent-my-car-pool.auth.us-east-2.amazoncognito.com/login?client_id=6sh01k6vqvqs4katnqi6acugf8&response_type=token&scope=email+openid+phone&redirect_uri=http://localhost:3000/account";
+export const REGISTER_URL = "https://rent-my-car-pool.auth.us-east-2.amazoncognito.com/signup?client_id=6sh01k6vqvqs4katnqi6acugf8&response_type=token&scope=email+openid+phone&redirect_uri=http://localhost:3000/account";

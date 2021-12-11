@@ -7852,11 +7852,6 @@ export type GetUsersQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetUsersQuery = { __typename?: 'query_root', users_user: Array<{ __typename?: 'users_user', id: any }> };
 
-export type MyQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type MyQueryQuery = { __typename?: 'query_root', users_user: Array<{ __typename?: 'users_user', id: any, date_registered?: any | null | undefined, email?: string | null | undefined, name?: string | null | undefined, picture?: string | null | undefined, preferred_language?: Users_Prefered_Languages_Enum | null | undefined, updated_at?: string | null | undefined, username?: string | null | undefined, wallet_id?: any | null | undefined }> };
-
 export type GetAllCarsByUuidQueryVariables = Exact<{
   _eq?: InputMaybe<Scalars['uuid']>;
 }>;
@@ -7868,6 +7863,16 @@ export type GetAllAvailableCarsQueryVariables = Exact<{ [key: string]: never; }>
 
 
 export type GetAllAvailableCarsQuery = { __typename?: 'query_root', cars_car: Array<{ __typename?: 'cars_car', body_type: Cars_Body_Type_Enum, capacity: number, car_brand: Cars_Car_Brand_Type_Enum, color: string, description: string, fuel_type: Cars_Fuel_Type_Enum, id: any, is_approval_required: boolean, lender_id: any, plate_number: string, rate: any, status: Cars_Car_Status_Enum, car_reviews: Array<{ __typename?: 'review_car_review', car_id: any, id: any, review_id: any, reviewer_id: any, review: { __typename?: 'review_review', date: any, description: string, id: any, score: any, title: string } }>, location: { __typename?: 'cars_location', long: any, lat: any, city: string, country: string, state: string, id: any } }> };
+
+export type GetLoggedInUserQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetLoggedInUserQuery = { __typename?: 'query_root', users_user: Array<{ __typename?: 'users_user', date_registered?: any | null | undefined, email?: string | null | undefined, picture?: string | null | undefined, id: any, name?: string | null | undefined, username?: string | null | undefined, wallet_id?: any | null | undefined }> };
+
+export type MyQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type MyQueryQuery = { __typename?: 'query_root', users_user: Array<{ __typename?: 'users_user', id: any, date_registered?: any | null | undefined, email?: string | null | undefined, name?: string | null | undefined, picture?: string | null | undefined, preferred_language?: Users_Prefered_Languages_Enum | null | undefined, updated_at?: string | null | undefined, username?: string | null | undefined, wallet_id?: any | null | undefined }> };
 
 
 export const GetUsersDocument = gql`
@@ -7904,48 +7909,6 @@ export function useGetUsersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<G
 export type GetUsersQueryHookResult = ReturnType<typeof useGetUsersQuery>;
 export type GetUsersLazyQueryHookResult = ReturnType<typeof useGetUsersLazyQuery>;
 export type GetUsersQueryResult = Apollo.QueryResult<GetUsersQuery, GetUsersQueryVariables>;
-export const MyQueryDocument = gql`
-    query MyQuery {
-  users_user(order_by: {}) {
-    id
-    date_registered
-    email
-    name
-    picture
-    preferred_language
-    updated_at
-    username
-    wallet_id
-  }
-}
-    `;
-
-/**
- * __useMyQueryQuery__
- *
- * To run a query within a React component, call `useMyQueryQuery` and pass it any options that fit your needs.
- * When your component renders, `useMyQueryQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useMyQueryQuery({
- *   variables: {
- *   },
- * });
- */
-export function useMyQueryQuery(baseOptions?: Apollo.QueryHookOptions<MyQueryQuery, MyQueryQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<MyQueryQuery, MyQueryQueryVariables>(MyQueryDocument, options);
-      }
-export function useMyQueryLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MyQueryQuery, MyQueryQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<MyQueryQuery, MyQueryQueryVariables>(MyQueryDocument, options);
-        }
-export type MyQueryQueryHookResult = ReturnType<typeof useMyQueryQuery>;
-export type MyQueryLazyQueryHookResult = ReturnType<typeof useMyQueryLazyQuery>;
-export type MyQueryQueryResult = Apollo.QueryResult<MyQueryQuery, MyQueryQueryVariables>;
 export const GetAllCarsByUuidDocument = gql`
     query GetAllCarsByUUID($_eq: uuid = "") {
   cars_car(where: {lender_id: {_eq: $_eq}}) {
@@ -8082,3 +8045,85 @@ export function useGetAllAvailableCarsLazyQuery(baseOptions?: Apollo.LazyQueryHo
 export type GetAllAvailableCarsQueryHookResult = ReturnType<typeof useGetAllAvailableCarsQuery>;
 export type GetAllAvailableCarsLazyQueryHookResult = ReturnType<typeof useGetAllAvailableCarsLazyQuery>;
 export type GetAllAvailableCarsQueryResult = Apollo.QueryResult<GetAllAvailableCarsQuery, GetAllAvailableCarsQueryVariables>;
+export const GetLoggedInUserDocument = gql`
+    query GetLoggedInUser {
+  users_user {
+    date_registered
+    email
+    picture
+    id
+    name
+    username
+    wallet_id
+  }
+}
+    `;
+
+/**
+ * __useGetLoggedInUserQuery__
+ *
+ * To run a query within a React component, call `useGetLoggedInUserQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetLoggedInUserQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetLoggedInUserQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetLoggedInUserQuery(baseOptions?: Apollo.QueryHookOptions<GetLoggedInUserQuery, GetLoggedInUserQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetLoggedInUserQuery, GetLoggedInUserQueryVariables>(GetLoggedInUserDocument, options);
+      }
+export function useGetLoggedInUserLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetLoggedInUserQuery, GetLoggedInUserQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetLoggedInUserQuery, GetLoggedInUserQueryVariables>(GetLoggedInUserDocument, options);
+        }
+export type GetLoggedInUserQueryHookResult = ReturnType<typeof useGetLoggedInUserQuery>;
+export type GetLoggedInUserLazyQueryHookResult = ReturnType<typeof useGetLoggedInUserLazyQuery>;
+export type GetLoggedInUserQueryResult = Apollo.QueryResult<GetLoggedInUserQuery, GetLoggedInUserQueryVariables>;
+export const MyQueryDocument = gql`
+    query MyQuery {
+  users_user(order_by: {}) {
+    id
+    date_registered
+    email
+    name
+    picture
+    preferred_language
+    updated_at
+    username
+    wallet_id
+  }
+}
+    `;
+
+/**
+ * __useMyQueryQuery__
+ *
+ * To run a query within a React component, call `useMyQueryQuery` and pass it any options that fit your needs.
+ * When your component renders, `useMyQueryQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useMyQueryQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useMyQueryQuery(baseOptions?: Apollo.QueryHookOptions<MyQueryQuery, MyQueryQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<MyQueryQuery, MyQueryQueryVariables>(MyQueryDocument, options);
+      }
+export function useMyQueryLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MyQueryQuery, MyQueryQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<MyQueryQuery, MyQueryQueryVariables>(MyQueryDocument, options);
+        }
+export type MyQueryQueryHookResult = ReturnType<typeof useMyQueryQuery>;
+export type MyQueryLazyQueryHookResult = ReturnType<typeof useMyQueryLazyQuery>;
+export type MyQueryQueryResult = Apollo.QueryResult<MyQueryQuery, MyQueryQueryVariables>;

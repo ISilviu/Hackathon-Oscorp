@@ -1,0 +1,11 @@
+query GetLoggedInUser {
+  users_user {
+    date_registered
+    email
+    picture
+    id
+    name
+    username
+    wallet_id
+  }
+}

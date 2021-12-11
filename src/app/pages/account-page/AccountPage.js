@@ -1,13 +1,15 @@
 import React from "react";
-import {Avatar, Button, Input, TextareaAutosize, TextField} from "@mui/material";
+import { Avatar, Button, Input, TextareaAutosize, TextField } from "@mui/material";
 import { styled } from '@mui/material/styles';
 import Stack from '@mui/material/Stack';
-import {grey} from '@mui/material/colors';
+import { grey } from '@mui/material/colors';
 import Box from "@mui/material/Box";
-import {Link} from "react-router-dom";
-import {FormWrapper, TextFieldWrapper} from "./AccountPage.styles";
+import { Link } from "react-router-dom";
+import { FormWrapper, TextFieldWrapper } from "./AccountPage.styles";
 import './AccountPage.css';
 import Header from "../../components/header/Header";
+import { useGetLoggedInUserQuery } from "../../../generated/graphql";
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const TabButton = styled(Button)(({ theme }) => ({
     color: theme.palette.getContrastText(grey[500]),
@@ -29,6 +31,32 @@ const TabButton = styled(Button)(({ theme }) => ({
 */
 
 const AccountPage = () => {
+    const location = useLocation();
+    const extractAuthToken = () => {
+        const idTokenParam = 'id_token=';
+        const idTokenStart = location.hash.indexOf(idTokenParam);
+
+        const accessTokenParam = '&access_token=';
+        const accessTokenStart = location.hash.indexOf(accessTokenParam);
+
+        return location.hash.substring(idTokenStart + idTokenParam.length, accessTokenStart);
+    }
+    const authToken = extractAuthToken();
+    localStorage.setItem('authToken', authToken);
+
+    const navigate = useNavigate();
+    if (location.hash) {
+        navigate(location.pathname)
+    }
+
+    const { data, isLoading, error } = useGetLoggedInUserQuery({
+        context: {
+            headers: {
+                Authorization: `Bearer ${authToken}`
+            }
+        }
+    });
+
     return (
         <div className="AccPage">
             <div className="Content">
@@ -37,12 +65,12 @@ const AccountPage = () => {
                     <FormWrapper>
                         <Avatar
                             alt="Remy Sharp"
-                            src="images/placeholder.jpg"
+                            src={(data && data.users_user?.length) ? data.users_user[0].picture : "images/placeholder.jpg"}
                             sx={{ width: 100, height: 100 }}
                         />
                         <TextFieldWrapper>
                             <label htmlFor="contained-button-file">
-                                <Input accept="image/*" id="contained-button-file" multiple type="file" 
+                                <Input accept="image/*" id="contained-button-file" multiple type="file"
                                     className="hidden"
                                 />
                                 <Button variant="outlined" component="span" className="primary-olbtn">
@@ -51,13 +79,13 @@ const AccountPage = () => {
                             </label>
                         </TextFieldWrapper>
                         <TextFieldWrapper>
-                            <TextField id="outlined-basic" label="Name" variant="outlined" />
+                            <TextField id="outlined-basic" variant="outlined" value={(data && data.users_user?.length) ? data.users_user[0].name : ''}/>
                         </TextFieldWrapper>
                         <TextFieldWrapper>
-                            <TextField id="outlined-basic" label="User" variant="outlined" />
+                            <TextField id="outlined-basic" variant="outlined" value={(data && data.users_user?.length) ? data.users_user[0].username : ''} />
                         </TextFieldWrapper>
                         <TextFieldWrapper>
-                            <TextField id="outlined-basic" label="Email" variant="outlined" />
+                            <TextField id="outlined-basic" variant="outlined" value={(data && data.users_user?.length) ? data.users_user[0].email : ''} />
                         </TextFieldWrapper>
                         <TextFieldWrapper>
                             <Button variant="contained" component="span" className="primary-btn">
@@ -69,10 +97,10 @@ const AccountPage = () => {
 
                 <div className="AddCar">
                     <FormWrapper>
-                    <h3>Add New Car</h3>
-                        <form style={{'margin-bottom': "1rem"}}>
-                            <Box style={{display:"flex"}}>
-                                <Stack style={{margin: "0 1rem"}}>
+                        <h3>Add New Car</h3>
+                        <form style={{ 'margin-bottom': "1rem" }}>
+                            <Box style={{ display: "flex" }}>
+                                <Stack style={{ margin: "0 1rem" }}>
                                     <TextFieldWrapper>
                                         <TextField id="outlined-basic" label="Fuel Type" variant="outlined" />
                                     </TextFieldWrapper>
@@ -89,7 +117,7 @@ const AccountPage = () => {
                                         <TextField id="outlined-basic" label="Plate Number" variant="outlined" />
                                     </TextFieldWrapper>
                                 </Stack>
-                                <Stack style={{margin: "0 1rem"}}>
+                                <Stack style={{ margin: "0 1rem" }}>
                                     <TextFieldWrapper>
                                         <TextField id="outlined-basic" label="Color" variant="outlined" />
                                     </TextFieldWrapper>
@@ -107,13 +135,13 @@ const AccountPage = () => {
                                     </TextFieldWrapper>
                                 </Stack>
                             </Box>
-                            <TextFieldWrapper style={{margin: "0 1rem"}}>
+                            <TextFieldWrapper style={{ margin: "0 1rem" }}>
                                 <TextField
                                     maxRows={Infinity}
                                     multiline rows={3}
-                                id="outlined-basic"
-                                label="Description"
-                                variant="outlined" />
+                                    id="outlined-basic"
+                                    label="Description"
+                                    variant="outlined" />
                             </TextFieldWrapper>
                         </form>
                         <Link to="/reviews" style={{ textDecoration: 'none' }}>
