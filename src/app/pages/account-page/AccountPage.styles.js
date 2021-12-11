@@ -5,6 +5,7 @@ export const FormWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100%;
 `
 
 export const TextFieldWrapper = styled.div`
