@@ -30,9 +30,9 @@ const AccountPage = () => {
                 <Avatar
                     alt="Remy Sharp"
                     src="images/placeholder.jpg"
-                    sx={{ width: 200, height: 200 }}
+                    sx={{ width: 100, height: 100 }}
                 />
-                <form style={{margin: "2rem"}}>
+                <form style={{'margin-bottom': "1rem"}}>
                     <Box style={{display:"flex"}}>
                         <Stack style={{margin: "0 1rem"}}>
                             <TextFieldWrapper>
@@ -61,7 +61,7 @@ const AccountPage = () => {
                             </TextFieldWrapper>
 
                             <TextFieldWrapper>
-                                <TextField id="outlined-basic" label="Rare" variant="outlined" />
+                                <TextField id="outlined-basic" label="Rate" variant="outlined" />
                             </TextFieldWrapper>
 
                             <TextFieldWrapper>
