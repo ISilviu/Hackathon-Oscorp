@@ -1,0 +1,11 @@
+.UserButtons {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 15px;
+}
+
+.logo {
+  margin-right: 30px;
+  height: 40px;
+  width: auto;
+}
