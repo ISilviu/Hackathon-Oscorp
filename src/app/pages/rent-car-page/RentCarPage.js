@@ -9,6 +9,7 @@ import { Marker, Popup } from 'react-leaflet';
 import CarCard from '../../components/car-card/CarCard.js'
 import * as ql from '../../../generated/graphql'
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const DEFAULT_IMAGE = 'https://carwow-uk-wp-3.imgix.net/Volvo-XC40-white-scaled.jpg'
 
@@ -16,7 +17,7 @@ const RentCarPage = ({ }) => {
     const [cars, setCars] = useState(null)
     const [carPosition, setCarPosition] = useState(null)
     const [markerDescription, setMarkerDescription] = useState(null)
-
+    const navigate = useNavigate();
 
     const { data, loading, error } = ql.useGetAllAvailableCarsQuery({
         variables: {
@@ -27,12 +28,15 @@ const RentCarPage = ({ }) => {
         setCars(data?.cars_car)
     }
 
-    console.log('DATA:', data)
     const onReserveClick = () => {
     }
 
     const onInfoClick = () => {
 
+    }
+
+    const onReviewClick = () => {
+        navigate('/reviews')
     }
 
     const onMarkerClick = (marker) => {
@@ -63,6 +67,7 @@ const RentCarPage = ({ }) => {
                         onReserveClick={onReserveClick}
                         onInfoClick={onInfoClick}
                         onMarkerClick={onMarkerClick}
+                        onReviewClick={onReviewClick}
                     />
                 </StyledCardContainer>
             )

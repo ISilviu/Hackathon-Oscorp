@@ -24,7 +24,8 @@ const CarCard = ({
 
     onReserveClick,
     onInfoClick,
-    onMarkerClick
+    onMarkerClick,
+    onReviewClick
 }) => {
 
     const onMarkerClickLocal = () => {
@@ -77,7 +78,7 @@ const CarCard = ({
                     </IconButton>
                 )}
                 <Link to="/reviews">
-                    <Button size="small" color="primary" onClick={onReserveClick}>
+                    <Button size="small" color="primary" onClick={onReviewClick}>
                         Review
                     </Button>
                 </Link>
