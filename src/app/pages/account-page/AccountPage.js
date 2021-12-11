@@ -31,19 +31,6 @@ const TabButton = styled(Button)(({ theme }) => ({
 const AccountPage = () => {
     return (
         <div className="AccPage">
-            <Box pt={5} pl={5} className="Tabs">
-                <Button className="Tab" variant="contained">
-                    <Link to="/account" style={{ textDecoration: 'none', color: "inherit" }}>
-                        Profile
-                    </Link>
-                </Button>
-                <Button className="Tab" variant="contained">My Rides</Button>
-                <Button className="Tab" variant="contained">
-                    <Link to="/transactions" style={{ textDecoration: 'none', color: "inherit" }}>
-                        Transactions
-                    </Link>
-                </Button>
-            </Box>
             <div className="Content">
 
                 <div className="userSettings">

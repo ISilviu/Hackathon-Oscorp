@@ -14,33 +14,50 @@ import { LOGIN_URL, REGISTER_URL } from "./Header.constants";
 import './Header.css';
 
 const Header = () => {
+    let isLoggedIn = true;
+
     return (
         <AppBar position="fixed" color='grey'>
         <Toolbar>
-          <Stack direction="row" flex={1} spacing={3}>
+        {isLoggedIn ?
+            <Stack direction="row" flex={1} spacing={3}>
+              <Link to="/" underline="none" style={{ textDecoration: 'none', color: 'inherit'}}>
+                <img src="images/logo.png" 
+                    className="logo"></img>
+              </Link>
 
-            <Link to="/" underline="none" style={{ textDecoration: 'none', color: 'inherit'}}>
-              <img src="images/logo.png" 
-                  className="logo"></img>
-            </Link>
+              <Link to="/account" underline="none" style={{ textDecoration: 'none', color: 'inherit'}}>
+                  <Button variant="outlined" className="primary-olbtn">Profile</Button>
+              </Link>
+              <Link to="/transactions" underline="none" style={{ textDecoration: 'none', color: 'inherit'}}>
+                  <Button variant="outlined" className="primary-olbtn">Transactions</Button>
+              </Link>
+            </Stack>
+             :
+            <Stack direction="row" flex={1} spacing={3}>
+              <Link to="/" underline="none" style={{ textDecoration: 'none', color: 'inherit'}}>
+                <img src="images/logo.png" 
+                    className="logo"></img>
+              </Link>
 
-            <Link to="/account" underline="none" style={{ textDecoration: 'none', color: 'inherit'}}>
-                <Button variant="outlined" className="primary-olbtn">Features</Button>
-            </Link>
+              <Link to="/account" underline="none" style={{ textDecoration: 'none', color: 'inherit'}}>
+                  <Button variant="outlined" className="primary-olbtn">Features</Button>
+              </Link>
 
-            <Link to="/account" underline="none" style={{ textDecoration: 'none', color: 'inherit'}}>
-                <Button variant="outlined" className="primary-olbtn">Why this app</Button>
-            </Link>
+              <Link to="/account" underline="none" style={{ textDecoration: 'none', color: 'inherit'}}>
+                  <Button variant="outlined" className="primary-olbtn">Why this app</Button>
+              </Link>
 
-            <Link to="/account" underline="none" style={{ textDecoration: 'none', color: 'inherit'}}>
-                <Button variant="outlined" className="primary-olbtn">Pricing</Button>
-            </Link>
+              <Link to="/account" underline="none" style={{ textDecoration: 'none', color: 'inherit'}}>
+                  <Button variant="outlined" className="primary-olbtn">Pricing</Button>
+              </Link>
 
-            <Link to="/reviews" underline="none" style={{ textDecoration: 'none', color: 'inherit'}}>
-                <Button variant="outlined" className="primary-olbtn">Reviews</Button>
-            </Link>
+              <Link to="/reviews" underline="none" style={{ textDecoration: 'none', color: 'inherit'}}>
+                  <Button variant="outlined" className="primary-olbtn">Reviews</Button>
+              </Link>
+            </Stack>
+          }
 
-          </Stack>
           <div className="UserButtons">
             <MuiLink
             underline="none"

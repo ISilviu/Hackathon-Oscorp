@@ -6,21 +6,27 @@ import { faArrowCircleLeft, faChevronLeft } from "@fortawesome/free-solid-svg-ic
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button } from "@mui/material";
 
-import Footer from "../../components/footer/Footer";
+import { MenuItem, FormControl, InputLabel, Select } from "@mui/material";
+import { useState } from "react";
+
 import "./ReviewsPage.css";
 
 const ReviewsPage = () => {
+    const [rating, handleChange] = useState(false);
+
     return (
         <div className="RevPageCont">
 
             {/* <img src="images/review-bg.jpg" className="Background"/> */}
 
             <div className="Aligner">
+
                 <div className="Head">Review this Car</div>
 
                 <div className="Content">
 
                     <div className="ImageContainer">
+                        
                         {/* <Button style={{position: 'absolute', top: '50%', left: '-10px'}}>
                             <FontAwesomeIcon icon={faChevronLeft}/>
                         </Button> */}
@@ -37,10 +43,23 @@ const ReviewsPage = () => {
                     </div>
 
                     <div className="Contribution">
-                        Your score:
-                        <ReviewStars score={2.65} />
+                        <FormControl fullWidth>
+                            <InputLabel id="demo-simple-select-label">Your Rating</InputLabel>
+                            <Select
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                value={rating}
+                                label="Rating"
+                                onChange={handleChange}
+                            >
+                                <MenuItem value={1}>1</MenuItem>
+                                <MenuItem value={2}>2</MenuItem>
+                                <MenuItem value={3}>3</MenuItem>
+                                <MenuItem value={4}>4</MenuItem>
+                                <MenuItem value={5}>5</MenuItem>
+                            </Select>
+                        </FormControl>
 
-                        <br></br>
                         <TextField
                             className="RevNote"
                             label="Review note" minRows={7} multiline color="primary" focused />
